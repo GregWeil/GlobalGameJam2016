@@ -11,6 +11,8 @@ public class GodConstruction : MonoBehaviour {
     Vector3 selectorVelocity = Vector3.zero;
 
 	GodHandAnimation anim = null;
+	bool animHasBlock = false;
+	Vector3 animReleasePos = Vector3.zero;
 
 	// Use this for initialization
 	void Start () {
@@ -32,27 +34,39 @@ public class GodConstruction : MonoBehaviour {
                 if (col != null) {
                     //Revert to last safe position if something is here
                     pos = selectorPosition;
-                }
-                selectedBlock.transform.position = selector.position;
-                if (!Input.GetMouseButton(0)) {
+				}
+				if (animHasBlock) {
+					anim.SetGoal (animReleasePos);
+				}
+				if (Input.GetMouseButton (0)) {
+					animReleasePos = pos;
+				} else if (anim.IsReady() && animHasBlock) {
 					//Check for players or the idol in the way
-					var hit = Physics2D.BoxCast(pos, new Vector2(0.5f, 0.5f), 0f, Vector2.zero, 0f, LayerMask.GetMask("Player", "Idol"));
+					var hit = Physics2D.BoxCast(animReleasePos, new Vector2(0.5f, 0.5f), 0f, Vector2.zero, 0f, LayerMask.GetMask("Player", "Idol"));
 					if (hit.collider == null) {
 						//Release the block
-						selectedBlock.transform.position = pos;
+						selectedBlock.transform.position = animReleasePos;
 						selectedBlock.GetComponent<Collider2D> ().enabled = true;
 						selectedBlock = null;
+						anim.SetExit ();
+						animHasBlock = false;
 					}
-                }
-            } else if (Input.GetMouseButtonDown(0)) {
+				}
+			} else if (Input.GetMouseButtonDown(0) && anim.IsReady() && !animHasBlock) {
                 //We aren't holding something, either spawn or grab
                 if (col == null) {
 					selectedBlock = (GameObject)Instantiate(block, pos, Quaternion.identity);
 					selectedBlock.GetComponent<Collider2D> ().enabled = false;
 					selectedBlock.name = block.name;
+
+					anim.SetGoal (pos);
+					animHasBlock = true;
 				} else if (col.GetComponent<GodStaticItem>() == null) {
 					selectedBlock = col.gameObject;
 					selectedBlock.GetComponent<Collider2D> ().enabled = false;
+
+					anim.SetGoal (pos);
+					animHasBlock = false;
                 }
             }
 
@@ -60,8 +74,14 @@ public class GodConstruction : MonoBehaviour {
             selector.position = Vector3.SmoothDamp(selector.position, pos, ref selectorVelocity, 0.05f);
             selectorPosition = pos;
 
-			//Update god hand
-			if (anim != null) anim.SetGoal(selector.position);
+			//Move block with hand
+			if (selectedBlock != null) {
+				if (animHasBlock) {
+					selectedBlock.transform.position = anim.GetPosition ();
+				} else if (anim.IsReady()) {
+					animHasBlock = true;
+				}
+			}
         }
 	}
 }
