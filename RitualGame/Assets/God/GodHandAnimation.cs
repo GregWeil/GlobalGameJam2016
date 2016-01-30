@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GodHandAnimation : MonoBehaviour {
 
+	public int playerNum = 0;
+
 	Vector2 position = Vector2.zero;
 	Vector2 destination = Vector2.zero;
 	Vector2 velocity = Vector2.zero;
@@ -10,12 +12,16 @@ public class GodHandAnimation : MonoBehaviour {
 	float cloudPosition = 0;
 	float cloudVelocity = 0;
 
-	public Transform hand, cloud;
+	float armLength = 15f;
+
+	public Transform hand, cloud, cutoff;
+	Material handMat = null;
 
 	// Use this for initialization
 	void Start () {
 		position = transform.position;
 		destination = position;
+		handMat = hand.GetComponentInChildren<Renderer> ().material;
 	}
 	
 	// Update is called once per frame
@@ -26,8 +32,18 @@ public class GodHandAnimation : MonoBehaviour {
 
 		hand.position = new Vector3 (position.x, position.y, hand.position.z);
 		cloud.position = new Vector3 (cloudPosition, cloud.position.y, cloud.position.z);
-		float handAngle = (-Mathf.Atan2 (cloud.position.x - hand.position.x, Mathf.Abs(cloud.position.y - hand.position.y)) * Mathf.Rad2Deg);
-		hand.rotation = Quaternion.AngleAxis (handAngle, Vector3.forward);
+		cloud.localPosition = new Vector3 (cloud.localPosition.x, 0f, cloud.localPosition.z);
+		Vector3 cloudOffset = (cloud.position - hand.position);
+		if (cloudOffset.magnitude > armLength) {
+			cloud.position = (hand.position + (cloudOffset.normalized * armLength));
+		}
+
+		if (cloud.position.y > hand.position.y) {
+			float handAngle = (-Mathf.Atan2 (cloud.position.x - hand.position.x, cloud.position.y - hand.position.y) * Mathf.Rad2Deg);
+			hand.rotation = Quaternion.AngleAxis (handAngle, Vector3.forward);
+		}
+
+		handMat.SetFloat ("_Cutoff", cutoff.position.y);
 	}
 
 	public void SetGoal(Vector2 pos) {
@@ -35,7 +51,7 @@ public class GodHandAnimation : MonoBehaviour {
 	}
 
 	public void SetExit() {
-		destination = new Vector2 (position.x, cloud.position.y + 0.1f);
+		destination = new Vector2 (position.x, transform.position.y + 0.1f);
 	}
 
 	public Vector2 GetPosition() {
