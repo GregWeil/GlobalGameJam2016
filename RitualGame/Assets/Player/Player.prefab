@@ -104,7 +104,8 @@ MonoBehaviour:
   playerNum: 0
   moveSpeed: 5
   moveAccel: 15
-  jumpForce: 12
+  jumpForce: 10
+  jumpCarry: 20
   gravity: {x: 0, y: -50}
 --- !u!212 &21285264
 SpriteRenderer:
@@ -145,7 +146,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: jumpForce
-      value: 12
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: jumpCarry
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
