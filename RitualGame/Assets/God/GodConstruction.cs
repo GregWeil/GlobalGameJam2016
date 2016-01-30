@@ -10,9 +10,11 @@ public class GodConstruction : MonoBehaviour {
     Vector3 selectorPosition = Vector3.zero;
     Vector3 selectorVelocity = Vector3.zero;
 
+	GodHandAnimation anim = null;
+
 	// Use this for initialization
 	void Start () {
-	
+		anim = GetComponent<GodHandAnimation> ();
 	}
 
 	// Update is called once per frame
@@ -42,12 +44,13 @@ public class GodConstruction : MonoBehaviour {
 						selectedBlock = null;
 					}
                 }
-            } else if (Input.GetMouseButton(0)) {
+            } else if (Input.GetMouseButtonDown(0)) {
                 //We aren't holding something, either spawn or grab
                 if (col == null) {
-                    var obj = (GameObject)Instantiate(block, pos, Quaternion.identity);
-                    obj.name = block.name;
-                } else {
+					selectedBlock = (GameObject)Instantiate(block, pos, Quaternion.identity);
+					selectedBlock.GetComponent<Collider2D> ().enabled = false;
+					selectedBlock.name = block.name;
+				} else if (col.GetComponent<GodStaticItem>() == null) {
 					selectedBlock = col.gameObject;
 					selectedBlock.GetComponent<Collider2D> ().enabled = false;
                 }
@@ -56,6 +59,9 @@ public class GodConstruction : MonoBehaviour {
             //Smoothly move the selector
             selector.position = Vector3.SmoothDamp(selector.position, pos, ref selectorVelocity, 0.05f);
             selectorPosition = pos;
+
+			//Update god hand
+			if (anim != null) anim.SetGoal(selector.position);
         }
 	}
 }
