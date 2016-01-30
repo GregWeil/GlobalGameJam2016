@@ -3,6 +3,7 @@ using System.Collections;
 
 public class GodConstruction : MonoBehaviour {
 
+    public Transform selector;
     public GameObject block;
 
 	// Use this for initialization
@@ -12,16 +13,18 @@ public class GodConstruction : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetMouseButtonDown(0)) {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Plane plane = new Plane(Vector3.forward, new Vector3(0f, 0f, -0.5f));
-            float distance;
-            if (plane.Raycast(ray, out distance)) {
-                Collider2D col = Physics2D.OverlapPoint(ray.GetPoint(distance), LayerMask.GetMask("Solid"));
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Plane plane = new Plane(Vector3.forward, new Vector3(0f, 0f, -0.5f));
+        float distance;
+        if (plane.Raycast(ray, out distance)) {
+            Vector3 pos = ray.GetPoint(distance);
+            pos = new Vector3(Mathf.Round(pos.x), Mathf.Round(pos.y), 0.0f);
+            selector.position = pos;
+
+            Collider2D col = Physics2D.OverlapPoint(ray.GetPoint(distance), LayerMask.GetMask("Solid"));
+            if (Input.GetMouseButtonDown(0)) {
                 if (col == null) {
-                    GameObject obj = (GameObject)Instantiate(block);
-                    Vector3 pos = ray.GetPoint(distance);
-                    obj.transform.position = new Vector3(Mathf.Round(pos.x), Mathf.Round(pos.y), 0.0f);
+                    GameObject obj = (GameObject)Instantiate(block, pos, Quaternion.identity);
                     obj.name = block.name;
                 } else {
                     Debug.Log(col);
