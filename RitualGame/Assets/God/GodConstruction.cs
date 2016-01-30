@@ -6,6 +6,7 @@ public class GodConstruction : MonoBehaviour {
     public Transform selector;
     public GameObject block;
 
+    GameObject selectedBlock = null;
     Vector3 selectorVelocity = Vector3.zero;
 
 	// Use this for initialization
@@ -29,7 +30,13 @@ public class GodConstruction : MonoBehaviour {
                     GameObject obj = (GameObject)Instantiate(block, pos, Quaternion.identity);
                     obj.name = block.name;
                 } else {
-                    Debug.Log(col);
+                    selectedBlock = col.gameObject;
+                }
+            } else if (selectedBlock != null) {
+                selectedBlock.transform.position = selector.position;
+                if (!Input.GetMouseButton(0)) {
+                    selectedBlock.transform.position = pos;
+                    selectedBlock = null;
                 }
             }
         }
