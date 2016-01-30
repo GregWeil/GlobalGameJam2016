@@ -14,12 +14,12 @@ public class PlayerMovement : MonoBehaviour {
 
 	bool jump = false;
 
-	BoxCollider2D col = null;
+	CircleCollider2D col = null;
 	Rigidbody2D body = null;
 
 	// Use this for initialization
 	void Start () {
-		col = GetComponent<BoxCollider2D> ();
+		col = GetComponent<CircleCollider2D> ();
 		body = GetComponent<Rigidbody2D> ();
 	}
 
@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetButtonDown ("Jump" + playerNum.ToString ())) {
-			RaycastHit2D hit = Physics2D.BoxCast (body.position, 0.9f*col.size, body.rotation, Vector2.down, 0.1f, LayerMask.GetMask("Solid"));
+			RaycastHit2D hit = Physics2D.CircleCast (body.position, 0.9f*col.radius, Vector2.down, 0.1f, LayerMask.GetMask("Solid"));
 			if (hit.collider != null) {
 				jump = true;
 			}

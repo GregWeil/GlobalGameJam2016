@@ -218,7 +218,7 @@ Transform:
   m_Children:
   - {fileID: 855522292}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 16
 --- !u!1001 &83096721
 Prefab:
   m_ObjectHideFlags: 0
@@ -1147,6 +1147,10 @@ Prefab:
     - target: {fileID: 168268, guid: 9f0773f54af396d479498e7880ffb745, type: 2}
       propertyPath: m_Name
       value: Player 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11420034, guid: 9f0773f54af396d479498e7880ffb745, type: 2}
+      propertyPath: playerNum
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9f0773f54af396d479498e7880ffb745, type: 2}
