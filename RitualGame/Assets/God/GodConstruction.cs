@@ -42,12 +42,13 @@ public class GodConstruction : MonoBehaviour {
 						selectedBlock = null;
 					}
                 }
-            } else if (Input.GetMouseButton(0)) {
+            } else if (Input.GetMouseButtonDown(0)) {
                 //We aren't holding something, either spawn or grab
                 if (col == null) {
-                    var obj = (GameObject)Instantiate(block, pos, Quaternion.identity);
-                    obj.name = block.name;
-                } else {
+					selectedBlock = (GameObject)Instantiate(block, pos, Quaternion.identity);
+					selectedBlock.GetComponent<Collider2D> ().enabled = false;
+					selectedBlock.name = block.name;
+				} else if (col.GetComponent<GodStaticItem>() == null) {
 					selectedBlock = col.gameObject;
 					selectedBlock.GetComponent<Collider2D> ().enabled = false;
                 }
