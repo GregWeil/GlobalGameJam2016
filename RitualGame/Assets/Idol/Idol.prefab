@@ -101,6 +101,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c3502a2f48247a6b128534460c19b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite1: {fileID: 21300000, guid: 6cc7462d2760d40aeac61672c63ec430, type: 3}
+  spawnPoint: {fileID: 0}
+  baseDropForce: 120
+  pickupDelay: 2
+  dropForce: {x: 0, y: 0}
+  distToSpawn: 0
 --- !u!212 &21221632
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -159,6 +165,26 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: clean
+      value: 
+      objectReference: {fileID: 21300000, guid: 6cc7462d2760d40aeac61672c63ec430,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: oneCrack
+      value: 
+      objectReference: {fileID: 21300000, guid: 54a2d8d5d189a4e55ac4bb253de92a17,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: twoCrack
+      value: 
+      objectReference: {fileID: 21300000, guid: a71672f4455f04dd9a4e52eddbb88567,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: threeCrack
+      value: 
+      objectReference: {fileID: 21300000, guid: 424dd01562cd74680adee2ee3f4d588f,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 113770}
