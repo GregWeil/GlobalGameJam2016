@@ -6,11 +6,11 @@ public class Idol : MonoBehaviour {
 	public float baseDropForce = 120f;
 	public float pickupDelay = 2f;
 
-	bool isHeld = false;
-	PlayerMovement lastPlayer = null;
+	public bool isHeld = false;
+	public PlayerMovement lastPlayer = null;
 
 	GameObject spawnPoint;
-	BoxCollider2D col = null;
+	BoxCollider2D box = null;
 	Rigidbody2D body = null;
 	CircleCollider2D groundCheck = null;
 	int damage = 0;
@@ -23,7 +23,7 @@ public class Idol : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		col = GetComponent<BoxCollider2D> ();
+		box = GetComponent<BoxCollider2D> ();
 		body = GetComponent<Rigidbody2D> ();
 		groundCheck = GetComponentInChildren<CircleCollider2D> ();
 		spawnPoint = GameMaster.gm.idolSpawn;
@@ -42,10 +42,11 @@ public class Idol : MonoBehaviour {
 	public bool PickUp(PlayerMovement player){
 		if (player != lastPlayer || (dropTime + pickupDelay < Time.time) ) {
 			transform.parent = player.transform;
-			float offset = player.GetComponent<CircleCollider2D> ().radius + col.size.y / 2;
+			float offset = player.GetComponent<CircleCollider2D> ().radius + box.size.y / 2;
 			transform.localPosition = new Vector3 (0, offset, 0);
-			//col.enabled = false;
+			box.isTrigger = true;
 			body.isKinematic = true;
+			groundCheck.enabled = false;
 			isHeld = true;
 			lastPlayer = player;
 			return true;
@@ -55,8 +56,9 @@ public class Idol : MonoBehaviour {
 	}
 
 	public void Drop(){
-		col.enabled = true;
+		box.isTrigger = false;
 		body.isKinematic = false;
+		groundCheck.enabled = true;
 		transform.parent = lastPlayer.transform.parent;
 		isHeld = false;
 		dropTime = Time.time;
@@ -70,7 +72,7 @@ public class Idol : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D coll){
-		if (coll.gameObject.tag == "Ground") {
+		if (coll.gameObject.tag == "Ground" && !isHeld) {
 			TakeDamage (1);
 		}
 	}

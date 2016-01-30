@@ -7,7 +7,11 @@ public class PlayerSpawnPoint : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll){
 		if (coll.gameObject.tag == "Idol") {
-			GameMaster.gm.ScorePoints (playerNumber, coll.gameObject.GetComponent<Idol>());
+			Idol idol = coll.gameObject.GetComponent<Idol> ();
+			if (idol.isHeld && idol.lastPlayer.playerNum == playerNumber) {
+				idol.lastPlayer.DropIdol ();
+				GameMaster.gm.ScorePoints (playerNumber, idol);
+			}
 		}
 	}
 }
