@@ -10,11 +10,12 @@ public class PlayerMovement : MonoBehaviour {
 
 	public float jumpForce = 1.0f;
     public float jumpCarry = 1.0f;
-
 	public Vector2 gravity = Vector2.zero;
 
     bool grounded = false;
 	bool jump = false;
+
+	float stun = 1.0f;
 
 	CircleCollider2D col = null;
 	Rigidbody2D body = null;
@@ -27,12 +28,13 @@ public class PlayerMovement : MonoBehaviour {
 
 	void FixedUpdate () {
 		body.AddForce (gravity - Physics2D.gravity);
-		float goalSpeed = (Input.GetAxis("Horizontal"+playerNum.ToString()) * moveSpeed);
-		float force = (goalSpeed - body.velocity.x) * moveAccel;
+		float goalSpeed = (Input.GetAxis("Horizontal"+playerNum.ToString()) * moveSpeed / stun);
+		float force = ((goalSpeed - body.velocity.x) * moveAccel);
+		if (!grounded) force /= stun;
 		body.AddForce(new Vector2(force, 0));
 
-        if (jump) {
-            body.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+		if (jump) {
+			body.AddForce(new Vector2(0, jumpForce / stun), ForceMode2D.Impulse);
         } else if (Input.GetButton("Jump" + playerNum.ToString()) && !grounded) {
             body.AddForce(new Vector2(0, jumpCarry));
         }
@@ -42,9 +44,23 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		RaycastHit2D hit = Physics2D.CircleCast (body.position, 0.9f*col.radius, Vector2.down, 0.1f, LayerMask.GetMask("Solid"));
-        grounded = ((hit.collider != null) && !jump);
+		grounded = ((hit.collider != null) && !jump);
+
+		//Turning
+		if (grounded && (Mathf.Abs(Input.GetAxis("Horizontal"+playerNum.ToString())) > 0.1f)) {
+			GetComponentInChildren<SpriteRenderer> ().flipX = (Input.GetAxis("Horizontal"+playerNum.ToString()) < 0.0f);
+		}
+
+		//Jumping
 		if (Input.GetButtonDown ("Jump" + playerNum.ToString ()) && grounded) {
 			jump = true;
 		}
+
+		//Recovery
+		stun = Mathf.MoveTowards(stun, 1.0f, 5.0f * Time.deltaTime);
+	}
+
+	void Stun (float amount) {
+		stun = Mathf.Max (amount, stun);
 	}
 }
