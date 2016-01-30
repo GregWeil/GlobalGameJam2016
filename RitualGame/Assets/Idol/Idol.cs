@@ -2,21 +2,22 @@
 using System.Collections;
 
 public class Idol : MonoBehaviour {
-	public Sprite sprite1;
-	public GameObject spawnPoint;
+	public Sprite[] damageSprites = new Sprite[4];
 	public float baseDropForce = 120f;
 	public float pickupDelay = 2f;
 
 	bool isHeld = false;
 	PlayerMovement lastPlayer = null;
 
+	GameObject spawnPoint;
 	BoxCollider2D col = null;
 	Rigidbody2D body = null;
+	CircleCollider2D groundCheck = null;
 	int damage = 0;
 	float dropTime = 0f;
+
 	[SerializeField]
 	Vector2 dropForce;
-
 	[SerializeField]
 	float distToSpawn;
 
@@ -24,8 +25,10 @@ public class Idol : MonoBehaviour {
 	void Start () {
 		col = GetComponent<BoxCollider2D> ();
 		body = GetComponent<Rigidbody2D> ();
-		spawnPoint = GameObject.FindGameObjectWithTag ("IdolSpawn");
+		groundCheck = GetComponentInChildren<CircleCollider2D> ();
+		spawnPoint = GameMaster.gm.idolSpawn;
 		dropForce = new Vector2 (0f, baseDropForce);
+
 	}
 
 	// Update is called once per frame
@@ -41,7 +44,7 @@ public class Idol : MonoBehaviour {
 			transform.parent = player.transform;
 			float offset = player.GetComponent<CircleCollider2D> ().radius + col.size.y / 2;
 			transform.localPosition = new Vector3 (0, offset, 0);
-			col.enabled = false;
+			//col.enabled = false;
 			body.isKinematic = true;
 			isHeld = true;
 			lastPlayer = player;
@@ -57,9 +60,31 @@ public class Idol : MonoBehaviour {
 		transform.parent = lastPlayer.transform.parent;
 		isHeld = false;
 		dropTime = Time.time;
-		float dir = spawnPoint.transform.position.x - transform.position.x;
 		body.AddForce(dropForce);
 	}
 
+	void OnCollisionEnter2D(Collision2D coll){
+		if (coll.gameObject.tag == "PlayerSpawn") {
+			Destroy (gameObject);
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D coll){
+		if (coll.gameObject.tag == "Ground") {
+			TakeDamage (1);
+		}
+	}
+
+	void TakeDamage(int dam){
+		damage += dam;
+		Debug.Log ("Damage = " + damage);
+		if (damage > 3) {
+			GameMaster.BreakIdol (this);
+		} else {
+			GetComponentInChildren<SpriteRenderer> ().sprite = damageSprites [damage];
+		}
+	}
+
+	public int getDamage(){ return damage; }
 
 }
