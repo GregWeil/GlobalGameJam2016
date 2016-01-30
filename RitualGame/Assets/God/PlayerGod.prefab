@@ -224,7 +224,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 474760}
@@ -291,7 +291,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.25, y: -0.25, z: -0.05}
+  m_LocalPosition: {x: 0.9, y: -0.25, z: -0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 421722}
@@ -343,7 +343,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.25, y: -0.25, z: 0.05}
+  m_LocalPosition: {x: 0.9, y: -0.25, z: 0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 421722}
@@ -504,7 +504,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63c8fd2eff4bf7147b7cbf79e1a87308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNum: 0
+  playerNum: 2
+  handOpen: {fileID: 21300000, guid: c65aafbc41f300f49b2efff64c0d0b67, type: 3}
+  handClosed: {fileID: 21300002, guid: c65aafbc41f300f49b2efff64c0d0b67, type: 3}
   hand: {fileID: 449020}
   cloud: {fileID: 421722}
   cutoff: {fileID: 473782}

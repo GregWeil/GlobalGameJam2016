@@ -50,6 +50,7 @@ public class GodConstruction : MonoBehaviour {
 						selectedBlock = null;
 						anim.SetExit ();
 						animHasBlock = false;
+						anim.Open ();
 					}
 				}
 			} else if (Input.GetMouseButtonDown(0) && anim.IsReady() && !animHasBlock) {
@@ -61,12 +62,14 @@ public class GodConstruction : MonoBehaviour {
 
 					anim.SetGoal (pos);
 					animHasBlock = true;
+					anim.Close ();
 				} else if (col.GetComponent<GodStaticItem>() == null) {
 					selectedBlock = col.gameObject;
 					selectedBlock.GetComponent<Collider2D> ().enabled = false;
 
 					anim.SetGoal (pos);
 					animHasBlock = false;
+					anim.Open ();
                 }
             }
 
@@ -80,6 +83,7 @@ public class GodConstruction : MonoBehaviour {
 					selectedBlock.transform.position = anim.GetPosition ();
 				} else if (anim.IsReady()) {
 					animHasBlock = true;
+					anim.Close ();
 				}
 			}
         }

@@ -13,15 +13,19 @@ public class GodHandAnimation : MonoBehaviour {
 	float cloudVelocity = 0;
 
 	float armLength = 15f;
+	
+	public Sprite handOpen, handClosed;
 
 	public Transform hand, cloud, cutoff;
+	SpriteRenderer handRen = null;
 	Material handMat = null;
 
 	// Use this for initialization
 	void Start () {
 		position = transform.position;
 		destination = position;
-		handMat = hand.GetComponentInChildren<Renderer> ().material;
+		handRen = hand.GetComponentInChildren<SpriteRenderer> ();
+		handMat = handRen.material;
 	}
 	
 	// Update is called once per frame
@@ -51,7 +55,7 @@ public class GodHandAnimation : MonoBehaviour {
 	}
 
 	public void SetExit() {
-		destination = new Vector2 (position.x, transform.position.y + 0.1f);
+		destination = new Vector2 (position.x, transform.position.y + 1f);
 	}
 
 	public Vector2 GetPosition() {
@@ -61,5 +65,13 @@ public class GodHandAnimation : MonoBehaviour {
 	public bool IsReady() {
 		if ((position.y >= cloud.position.y) && (destination.y > position.y)) return true;
 		return (Vector2.Distance (position, destination) <= 0.01f);
+	}
+
+	public void Open() {
+		handRen.sprite = handOpen;
+	}
+
+	public void Close() {
+		handRen.sprite = handClosed;
 	}
 }
