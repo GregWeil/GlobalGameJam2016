@@ -4,7 +4,7 @@ using System.Collections;
 public class Idol : MonoBehaviour {
 	public Sprite sprite1;
 	public GameObject spawnPoint;
-	public float dropForce = 100f;
+	public float baseDropForce = 120f;
 	public float pickupDelay = 2f;
 
 	bool isHeld = false;
@@ -14,17 +14,26 @@ public class Idol : MonoBehaviour {
 	Rigidbody2D body = null;
 	int damage = 0;
 	float dropTime = 0f;
+	[SerializeField]
+	Vector2 dropForce;
+
+	[SerializeField]
+	float distToSpawn;
 
 	// Use this for initialization
 	void Start () {
 		col = GetComponent<BoxCollider2D> ();
 		body = GetComponent<Rigidbody2D> ();
 		spawnPoint = GameObject.FindGameObjectWithTag ("IdolSpawn");
+		dropForce = new Vector2 (0f, baseDropForce);
 	}
 
 	// Update is called once per frame
 	void Update () {
-
+		distToSpawn = spawnPoint.transform.position.x - transform.position.x;
+		float camHorizExtend = Camera.main.orthographicSize * Screen.width / Screen.height;
+		float horizPercent = distToSpawn / camHorizExtend;
+		dropForce.x = baseDropForce * 2 * horizPercent;
 	}
 
 	public bool PickUp(PlayerMovement player){
@@ -48,9 +57,8 @@ public class Idol : MonoBehaviour {
 		transform.parent = lastPlayer.transform.parent;
 		isHeld = false;
 		dropTime = Time.time;
-		Vector3 dir = spawnPoint.transform.position - transform.position;
-		dir = dir.normalized;
-		body.AddForce (dropForce * dir);
+		float dir = spawnPoint.transform.position.x - transform.position.x;
+		body.AddForce(dropForce);
 	}
 
 
