@@ -26,15 +26,19 @@ public class GodConstruction : MonoBehaviour {
 
             Collider2D col = Physics2D.OverlapPoint(ray.GetPoint(distance), LayerMask.GetMask("Solid"));
             if (selectedBlock != null) {
+                //We're holding something, update it's position and drop
                 if (col != null) {
+                    //Revert to last safe position if something is here
                     pos = selectorPosition;
                 }
                 selectedBlock.transform.position = selector.position;
                 if (!Input.GetMouseButton(0)) {
+                    //Release the block
                     selectedBlock.transform.position = pos;
                     selectedBlock = null;
                 }
             } else if (Input.GetMouseButton(0)) {
+                //We aren't holding something, either spawn or grab
                 if (col == null) {
                     GameObject obj = (GameObject)Instantiate(block, pos, Quaternion.identity);
                     obj.name = block.name;
@@ -43,7 +47,8 @@ public class GodConstruction : MonoBehaviour {
                 }
             }
 
-                selector.position = Vector3.SmoothDamp(selector.position, pos, ref selectorVelocity, 0.05f);
+            //Smoothly move the selector
+            selector.position = Vector3.SmoothDamp(selector.position, pos, ref selectorVelocity, 0.05f);
             selectorPosition = pos;
         }
 	}
