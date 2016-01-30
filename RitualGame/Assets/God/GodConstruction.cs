@@ -10,9 +10,11 @@ public class GodConstruction : MonoBehaviour {
     Vector3 selectorPosition = Vector3.zero;
     Vector3 selectorVelocity = Vector3.zero;
 
+	GodHandAnimation anim = null;
+
 	// Use this for initialization
 	void Start () {
-	
+		anim = GetComponent<GodHandAnimation> ();
 	}
 
 	// Update is called once per frame
@@ -57,6 +59,9 @@ public class GodConstruction : MonoBehaviour {
             //Smoothly move the selector
             selector.position = Vector3.SmoothDamp(selector.position, pos, ref selectorVelocity, 0.05f);
             selectorPosition = pos;
+
+			//Update god hand
+			if (anim != null) anim.SetGoal(selector.position);
         }
 	}
 }
