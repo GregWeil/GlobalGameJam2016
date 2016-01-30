@@ -14,17 +14,17 @@ public class GodConstruction : MonoBehaviour {
 	void Start () {
 	
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Plane plane = new Plane(Vector3.forward, new Vector3(0f, 0f, -0.5f));
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        var plane = new Plane(Vector3.forward, new Vector3(0f, 0f, -0.5f));
         float distance;
         if (plane.Raycast(ray, out distance)) {
             Vector3 pos = ray.GetPoint(distance);
             pos = new Vector3(Mathf.Round(pos.x), Mathf.Round(pos.y), 0.0f);
 
-            Collider2D col = Physics2D.OverlapPoint(ray.GetPoint(distance), LayerMask.GetMask("Solid"));
+            var col = Physics2D.OverlapPoint(ray.GetPoint(distance), LayerMask.GetMask("Solid"));
             if (selectedBlock != null) {
                 //We're holding something, update it's position and drop
                 if (col != null) {
@@ -33,17 +33,23 @@ public class GodConstruction : MonoBehaviour {
                 }
                 selectedBlock.transform.position = selector.position;
                 if (!Input.GetMouseButton(0)) {
-                    //Release the block
-                    selectedBlock.transform.position = pos;
-                    selectedBlock = null;
+					//Check for players or the idol in the way
+					var hit = Physics2D.BoxCast(pos, new Vector2(0.5f, 0.5f), 0f, Vector2.zero, 0f, LayerMask.GetMask("Player", "Idol"));
+					if (hit.collider == null) {
+						//Release the block
+						selectedBlock.transform.position = pos;
+						selectedBlock.GetComponent<Collider2D> ().enabled = true;
+						selectedBlock = null;
+					}
                 }
             } else if (Input.GetMouseButton(0)) {
                 //We aren't holding something, either spawn or grab
                 if (col == null) {
-                    GameObject obj = (GameObject)Instantiate(block, pos, Quaternion.identity);
+                    var obj = (GameObject)Instantiate(block, pos, Quaternion.identity);
                     obj.name = block.name;
                 } else {
-                    selectedBlock = col.gameObject;
+					selectedBlock = col.gameObject;
+					selectedBlock.GetComponent<Collider2D> ().enabled = false;
                 }
             }
 
