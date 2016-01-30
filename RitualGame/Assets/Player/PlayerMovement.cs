@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour {
 		BoxCollider2D idol_box = idol.GetComponent<BoxCollider2D>();
 		Rigidbody2D idol_body = idol.GetComponent<Rigidbody2D> ();
 		idol.transform.parent = transform;
-		float offset = col.size.y/2 + idol_box.size.y/2;
+		float offset = col.radius + idol_box.size.y/2;
 		idol.transform.localPosition = new Vector3 (0, offset, 0);
 		idol_box.enabled = false;
 		idol_body.isKinematic = true;
