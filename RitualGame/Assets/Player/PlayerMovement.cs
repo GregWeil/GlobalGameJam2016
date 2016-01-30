@@ -14,16 +14,21 @@ public class PlayerMovement : MonoBehaviour {
 
     bool grounded = false;
 	bool jump = false;
+	bool hasIdol = false;
+
+	GameObject idol = null;
 
 	float stun = 1.0f;
 
 	CircleCollider2D col = null;
 	Rigidbody2D body = null;
+	//Sprite sprite = null;
 
 	// Use this for initialization
 	void Start () {
 		col = GetComponent<CircleCollider2D> ();
 		body = GetComponent<Rigidbody2D> ();
+		//sprite = GetComponentInChildren<SpriteRenderer> ().sprite;
 	}
 
 	void FixedUpdate () {
@@ -63,4 +68,39 @@ public class PlayerMovement : MonoBehaviour {
 	void Stun (float amount) {
 		stun = Mathf.Max (amount, stun);
 	}
+
+	void OnCollisionEnter2D(Collision2D coll){
+		if (coll.gameObject.tag == "Idol" && !hasIdol) {
+			PickUpIdol(coll.gameObject);
+		}
+	}
+
+	void PickUpIdol(GameObject id){
+		idol = id;
+		BoxCollider2D idol_box = idol.GetComponent<BoxCollider2D>();
+		Rigidbody2D idol_body = idol.GetComponent<Rigidbody2D> ();
+		idol.transform.parent = transform;
+		float offset = col.size.y/2 + idol_box.size.y/2;
+		idol.transform.localPosition = new Vector3 (0, offset, 0);
+		idol_box.enabled = false;
+		idol_body.isKinematic = true;
+		hasIdol = true;
+	}
+
+	void DropIdol(){
+		idol.GetComponent<BoxCollider2D> ().enabled = true;
+		idol.GetComponent<Rigidbody2D> ().isKinematic = false;
+		idol.transform.parent = transform.parent;
+		hasIdol = false;
+		idol = null;
+	}
+
 }
+
+
+
+
+
+
+
+
