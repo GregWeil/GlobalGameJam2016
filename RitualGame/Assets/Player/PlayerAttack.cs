@@ -8,7 +8,7 @@ public class PlayerAttack : MonoBehaviour {
 	float attackRadius = 0.3f;
 	float attackRange = 0.8f;
 
-	float knockback = 10.0f;
+	float knockback = 20.0f;
 
 	Collider2D col = null;
 	Rigidbody2D body = null;
@@ -28,7 +28,7 @@ public class PlayerAttack : MonoBehaviour {
 				if (hit.collider != col) {
 					hit.collider.SendMessage ("Stun", 5.0f, SendMessageOptions.DontRequireReceiver);
 					hit.collider.SendMessage ("DropIdol", SendMessageOptions.DontRequireReceiver);
-					Vector2 push = (dir + new Vector2 (0, 0.5f)) * knockback;
+					Vector2 push = (dir + new Vector2 (0, 0.3f)) * knockback;
 					hit.collider.GetComponent<Rigidbody2D> ().AddForce (push, ForceMode2D.Impulse);
 				}
 			}
