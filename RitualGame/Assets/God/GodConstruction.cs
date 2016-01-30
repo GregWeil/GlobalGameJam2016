@@ -6,6 +6,8 @@ public class GodConstruction : MonoBehaviour {
     public Transform selector;
     public GameObject block;
 
+    Vector3 selectorVelocity = Vector3.zero;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -19,7 +21,7 @@ public class GodConstruction : MonoBehaviour {
         if (plane.Raycast(ray, out distance)) {
             Vector3 pos = ray.GetPoint(distance);
             pos = new Vector3(Mathf.Round(pos.x), Mathf.Round(pos.y), 0.0f);
-            selector.position = pos;
+            selector.position = Vector3.SmoothDamp(selector.position, pos, ref selectorVelocity, 0.05f);
 
             Collider2D col = Physics2D.OverlapPoint(ray.GetPoint(distance), LayerMask.GetMask("Solid"));
             if (Input.GetMouseButtonDown(0)) {
