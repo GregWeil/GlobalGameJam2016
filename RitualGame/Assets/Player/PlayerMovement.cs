@@ -74,12 +74,12 @@ public class PlayerMovement : MonoBehaviour {
 		}
 	}
 
-	void PickUpIdol(Idol id){
+	public void PickUpIdol(Idol id){
 		idol = id;
 		hasIdol = idol.PickUp (this);
 	}
 
-	void DropIdol(){
+	public void DropIdol(){
 		if (!hasIdol) { return; }
 		idol.Drop();
 		hasIdol = false;
