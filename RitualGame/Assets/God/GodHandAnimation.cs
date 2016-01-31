@@ -30,8 +30,8 @@ public class GodHandAnimation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		position = Vector2.SmoothDamp (position, destination, ref velocity, 0.3f);
-		cloudPosition = Mathf.SmoothDamp (cloudPosition, destination.x, ref cloudVelocity, 0.5f);
+		position = Vector2.SmoothDamp (position, destination, ref velocity, 0.1f);
+		cloudPosition = Mathf.SmoothDamp (cloudPosition, destination.x, ref cloudVelocity, 0.3f);
 		cloudPosition = position.x;
 
 		hand.position = new Vector3 (position.x, position.y, hand.position.z);
@@ -64,7 +64,7 @@ public class GodHandAnimation : MonoBehaviour {
 
 	public bool IsReady() {
 		if ((position.y >= cloud.position.y) && (destination.y > position.y)) return true;
-		return (Vector2.Distance (position, destination) <= 0.01f);
+		return (Vector2.Distance (position, destination) <= 0.1f);
 	}
 
 	public void Open() {
