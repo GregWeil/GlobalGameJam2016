@@ -9,6 +9,7 @@ public class PlayerAttack : MonoBehaviour {
 
 	Collider2D col = null;
 	Rigidbody2D body = null;
+	PlayerMovement move = null;
 	Animator anim = null;
 	int controlNum;
 
@@ -16,8 +17,9 @@ public class PlayerAttack : MonoBehaviour {
 	void Start () {
 		col = GetComponent<Collider2D> ();
 		body = GetComponent<Rigidbody2D> ();
+		move = GetComponent<PlayerMovement> ();
 		anim = GetComponentInChildren<Animator> ();
-		controlNum = GetComponent<PlayerMovement> ().controlNum;
+		controlNum = move.controlNum;
 	}
 
 	IEnumerator Attack () {
@@ -37,7 +39,7 @@ public class PlayerAttack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetButtonDown ("Attack" + controlNum.ToString ())) {
+		if (Input.GetButtonDown ("Attack" + controlNum.ToString ()) && !move.HasIdol()) {
 			StartCoroutine (Attack ());
 		}
 	}

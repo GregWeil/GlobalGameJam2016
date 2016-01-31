@@ -82,30 +82,26 @@ public class PlayerMovement : MonoBehaviour {
 		stun = Mathf.Max (amount, stun);
 	}
 
-	void OnCollisionEnter2D(Collision2D coll){
+	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.gameObject.tag == "Idol" && !hasIdol) {
 			PickUpIdol(coll.gameObject.GetComponent<Idol>());
 		}
 	}
 
-	public void PickUpIdol(Idol id){
+	public void PickUpIdol(Idol id) {
 		idol = id;
 		hasIdol = idol.PickUp (this);
 	}
 
-	public void DropIdol(){
+	public void DropIdol() {
 		if (!hasIdol) { return; }
 		idol.Drop();
 		hasIdol = false;
 		idol = null;
 	}
 
+	public bool HasIdol() {
+		return hasIdol;
+	}
+
 }
-
-
-
-
-
-
-
-
