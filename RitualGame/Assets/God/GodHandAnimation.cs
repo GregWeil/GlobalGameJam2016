@@ -18,16 +18,17 @@ public class GodHandAnimation : MonoBehaviour {
 
 	public Transform hand, cloud, cutoff;
 	SpriteRenderer handRen = null;
-	Material handMat = null;
+	Material handMat = null, handShadowMat = null;
 
 	// Use this for initialization
 	void Start () {
 		position = transform.position;
 		destination = position;
-		handRen = hand.GetComponentInChildren<SpriteRenderer> ();
-		handMat = handRen.material;
+        handRen = hand.GetComponentInChildren<SpriteRenderer>();
+        handMat = handRen.material;
+        handShadowMat = hand.GetComponentInChildren<MeshRenderer>().material;
 
-		SetExit ();
+        SetExit ();
 	}
 	
 	// Update is called once per frame
@@ -49,8 +50,9 @@ public class GodHandAnimation : MonoBehaviour {
 			hand.rotation = Quaternion.AngleAxis (handAngle, Vector3.forward);
 		}
 
-		handMat.SetFloat ("_Cutoff", cutoff.position.y);
-	}
+        handMat.SetFloat("_Cutoff", cutoff.position.y);
+        handShadowMat.SetFloat("_CloudHeight", cutoff.position.y);
+    }
 
 	public void SetGoal(Vector2 pos) {
 		destination = pos;
