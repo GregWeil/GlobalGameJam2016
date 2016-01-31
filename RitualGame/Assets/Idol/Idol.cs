@@ -42,7 +42,8 @@ public class Idol : MonoBehaviour {
 	public bool PickUp(PlayerMovement player){
 		if (player != lastPlayer || (dropTime + pickupDelay < Time.time) ) {
 			transform.parent = player.transform;
-			float offset = player.GetComponent<CircleCollider2D> ().radius + box.size.y / 2;
+            var col = player.GetComponent<BoxCollider2D>();
+            float offset = col.offset.y + col.size.y/2 + box.size.y/2;
 			transform.localPosition = new Vector3 (0, offset, 0);
 			box.isTrigger = true;
 			body.isKinematic = true;

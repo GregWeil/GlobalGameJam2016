@@ -6,8 +6,7 @@ public class PlayerAttack : MonoBehaviour {
 	float attackRange = 0.8f;
 
 	float knockback = 20.0f;
-
-	Collider2D col = null;
+    
 	Rigidbody2D body = null;
 	PlayerMovement move = null;
 	Animator anim = null;
@@ -15,7 +14,6 @@ public class PlayerAttack : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		col = GetComponent<Collider2D> ();
 		body = GetComponent<Rigidbody2D> ();
 		move = GetComponent<PlayerMovement> ();
 		anim = GetComponentInChildren<Animator> ();
@@ -28,7 +26,7 @@ public class PlayerAttack : MonoBehaviour {
 		Vector2 dir = GetComponentInChildren<SpriteRenderer> ().flipX ? Vector2.left : Vector2.right;
 		var hits = Physics2D.CircleCastAll (body.position, attackRadius, dir, attackRange, LayerMask.GetMask ("Player"));
 		foreach (var hit in hits) {
-			if (hit.collider != col) {
+			if (hit.collider.gameObject != gameObject) {
 				hit.collider.SendMessage ("Stun", 5.0f, SendMessageOptions.DontRequireReceiver);
 				hit.collider.SendMessage ("DropIdol", SendMessageOptions.DontRequireReceiver);
 				Vector2 push = (dir + new Vector2 (0, 0.3f)) * knockback;
