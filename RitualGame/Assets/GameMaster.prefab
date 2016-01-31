@@ -39,13 +39,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10037b7b892e848d3bcc2880219b2bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 168268, guid: 9f0773f54af396d479498e7880ffb745, type: 2}
-  idolPrefab: {fileID: 113770, guid: 6a7ea73b2f4e546ed96be6fe6011cca3, type: 2}
-  playerSpawn: {fileID: 105328, guid: cf17c61522a81451b92790e92fbd1bb3, type: 2}
-  idolSpawn: {fileID: 132156, guid: 06c34e97594fa4ec28d9cd7346e7fe14, type: 2}
+  playerScores: 000000000000000000000000
+  idolsRemaining: 10
+  roundNumber: 0
+  playerRoles: {x: 0, y: 1, z: 2}
   spawnDelay: 2
   pointsPerIdol: 2
-  playerScores: 000000000000000000000000
+  idolsPerRound: 10
+  godOpenSprites:
+  - {fileID: 21300000, guid: 131afe9353dc32c40a3184cc170b84d6, type: 3}
+  - {fileID: 21300000, guid: c65aafbc41f300f49b2efff64c0d0b67, type: 3}
+  - {fileID: 21300000, guid: 106c02e1c974b124f8e2865678a07a1e, type: 3}
+  godClosedSprites:
+  - {fileID: 21300002, guid: 131afe9353dc32c40a3184cc170b84d6, type: 3}
+  - {fileID: 21300002, guid: c65aafbc41f300f49b2efff64c0d0b67, type: 3}
+  - {fileID: 21300002, guid: 106c02e1c974b124f8e2865678a07a1e, type: 3}
+  playerSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  totemSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerPrefab: {fileID: 168268, guid: 9f0773f54af396d479498e7880ffb745, type: 2}
+  idolPrefab: {fileID: 113770, guid: 6a7ea73b2f4e546ed96be6fe6011cca3, type: 2}
+  idolSpawn: {fileID: 132156, guid: 06c34e97594fa4ec28d9cd7346e7fe14, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -61,6 +80,36 @@ Prefab:
       propertyPath: playerSpawn
       value: 
       objectReference: {fileID: 105328, guid: cf17c61522a81451b92790e92fbd1bb3, type: 2}
+    - target: {fileID: 0}
+      propertyPath: godOpenSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 131afe9353dc32c40a3184cc170b84d6,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: godOpenSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: c65aafbc41f300f49b2efff64c0d0b67,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: godOpenSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 106c02e1c974b124f8e2865678a07a1e,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: godClosedSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300002, guid: 131afe9353dc32c40a3184cc170b84d6,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: godClosedSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300002, guid: c65aafbc41f300f49b2efff64c0d0b67,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: godClosedSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300002, guid: 106c02e1c974b124f8e2865678a07a1e,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 116154}

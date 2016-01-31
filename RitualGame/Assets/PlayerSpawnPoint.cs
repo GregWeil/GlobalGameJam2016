@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class PlayerSpawnPoint : MonoBehaviour {
-
+	[Range(0,2)]
 	public int playerNumber = 0;
 
 	void OnTriggerEnter2D(Collider2D coll){
