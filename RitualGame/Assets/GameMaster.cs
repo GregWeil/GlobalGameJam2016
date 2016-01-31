@@ -23,6 +23,7 @@ public class GameMaster : MonoBehaviour {
 	public int idolsPerRound = 10;
 
 	[Header("Setup")]
+	public Material reticles;
 	public Sprite[] godOpenSprites = new Sprite[3];
 	public Sprite[] godClosedSprites = new Sprite[3];
 	public Sprite[] playerSprites = new Sprite[3];
@@ -102,13 +103,14 @@ public class GameMaster : MonoBehaviour {
 		godPlayer.playerNum = rounds[roundNumber,1];
 		rightSpawn.playerNumber = rightPlayer.playerNum = rounds[roundNumber,2];
 		//set sprites
-		//TODO: color swap the animations
+		//TODO: color swap the animations and reticle
 		leftPlayer.GetComponentInChildren<SpriteRenderer>().sprite = playerSprites[rounds[roundNumber,0]];
 		leftTotem.sprite = totemSprites[rounds[roundNumber,0]];
 		godPlayer.handOpen = godOpenSprites[rounds[roundNumber,1]];
 		godPlayer.handClosed = godClosedSprites[rounds[roundNumber,1]];
 		rightPlayer.GetComponentInChildren<SpriteRenderer>().sprite = playerSprites[rounds[roundNumber,2]];
 		rightTotem.sprite = totemSprites[rounds[roundNumber,2]];
+
 	}
 
 	public IEnumerator RespawnIdol () {
