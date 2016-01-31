@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11427724}
   m_Layer: 0
   m_Name: Sprite
-  m_TagString: Totem
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,7 +44,7 @@ GameObject:
   - 4: {fileID: 433250}
   m_Layer: 0
   m_Name: Totem Right
-  m_TagString: Untagged
+  m_TagString: Totem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

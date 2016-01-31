@@ -38,10 +38,10 @@ public class GameMaster : MonoBehaviour {
 
 
 	Color[] plColors = { Color.blue, Color.green, Color.red };
-	int[,] rounds = {
+	int[,] rounds = new int[,] {
 		//player #s, not control #s
 		//{ left-tribesman, god, right-tribesman }
-		{0}, //dummy array to align indices with round number
+		{-1, -1, -1}, //dummy array to align indices with round number
 		{ 0, 1, 2 }, { 2, 0, 1 }, { 1, 2, 0 },
 		{ 0, 1, 2 }, { 1, 2, 0 }, { 2, 0, 1 }
 	};
@@ -65,8 +65,6 @@ public class GameMaster : MonoBehaviour {
 	TextMesh leftTotemScore = null;
 	TextMesh rightTotemScore = null;
 	Text godScore = null;
-
-	//TODO: UI on totems/pedestal (once sprites are in)
 
 //====================================================================================
 
@@ -111,6 +109,8 @@ public class GameMaster : MonoBehaviour {
 		startRoundText = GameObject.Find ("StartRoundButton").GetComponent<Text>();
 		endText = GameObject.Find ("EndText").GetComponent<Text> ();
 		endText.enabled = false;
+
+		InitializeNextRound ();
 	}
 
 //====================================================================================
@@ -125,6 +125,12 @@ public class GameMaster : MonoBehaviour {
 		}
 		if (!gameOver && Input.GetButtonDown ("Pause")) { PauseGame (); }
 		if (!roundRunning && Input.GetButtonDown ("Start")) { EndRoundBreak (); }
+	}
+
+//====================================================================================
+
+	void UpdateDisplays(){
+		Debug.Log ("Round num: " + roundNumber + ", num scores: " + playerScores.Length);
 		leftTotemScore.text = "" + playerScores[rounds[roundNumber,0]];
 		godScore.text = "" + playerScores[rounds[roundNumber,1]];
 		rightTotemScore.text = "" + playerScores[rounds[roundNumber,2]];
@@ -183,6 +189,10 @@ public class GameMaster : MonoBehaviour {
 	void InitializeNextRound(){
 		roundNumber++;
 		idolsRemaining = idolsPerRound;
+		Debug.Log ("Round num: " + roundNumber);
+		Debug.Log ("Left: Player " + rounds [roundNumber, 0]);
+		Debug.Log("God: Player " + rounds[roundNumber,1]);
+		Debug.Log("Right: Player " + rounds[roundNumber,2]);
 		playerRoles = new Vector3 (rounds[roundNumber,0], rounds[roundNumber,1], rounds[roundNumber,2]);
 		//reset positions onscreen
 		leftPlayer.transform.position = leftSpawn.transform.position;
@@ -218,12 +228,14 @@ public class GameMaster : MonoBehaviour {
 //====================================================================================
 
 	public void ScorePoints(int playerNum, Idol idol){
+		Debug.Log ("Round num: " + roundNumber);
 		int idolBonusPoints = idol.getDamage ();
 		playerScores [rounds[roundNumber,1]] += pointsPerIdol + idolBonusPoints;
 		playerScores [playerNum] += pointsPerIdol;
 		Destroy (idol.gameObject);
 		idolsRemaining--;
 		StartCoroutine (RespawnIdol());
+		UpdateDisplays ();
 	}
 
 //====================================================================================
@@ -232,6 +244,7 @@ public class GameMaster : MonoBehaviour {
 		Destroy (idol.gameObject);
 		gm.idolsRemaining--;
 		gm.StartCoroutine (gm.RespawnIdol());
+		gm.UpdateDisplays ();
 	}
 
 //====================================================================================
