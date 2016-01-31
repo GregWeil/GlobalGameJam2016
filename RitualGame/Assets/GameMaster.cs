@@ -204,6 +204,7 @@ public class GameMaster : MonoBehaviour {
 
 	void InitializeNextRound(){
 		roundNumber++;
+		paused = true;
 		idolsRemaining = idolsPerRound;
 //		Debug.Log ("Round num: " + roundNumber);
 //		Debug.Log ("Left: Player " + rounds [roundNumber, 0]);
