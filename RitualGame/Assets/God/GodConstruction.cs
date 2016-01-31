@@ -31,7 +31,7 @@ public class GodConstruction : MonoBehaviour {
             Vector3 pos = ray.GetPoint(distance);
             pos = new Vector3(Mathf.Round(pos.x), Mathf.Round(pos.y), 0.0f);
 
-            var col = Physics2D.OverlapPoint(ray.GetPoint(distance), LayerMask.GetMask("Solid"));
+            var col = Physics2D.OverlapPoint(ray.GetPoint(distance), LayerMask.GetMask("Solid", "Reserved"));
             if (selectedBlock != null) {
                 //We're holding something, update it's position and drop
                 if (col != null) {
