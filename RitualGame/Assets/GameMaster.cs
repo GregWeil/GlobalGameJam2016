@@ -9,21 +9,25 @@ public class GameMaster : MonoBehaviour {
 		if (gm == null) { gm = this; }
 	}
 
-//	[System.Serializable]
-//	public class Scores{
-//		public int[] playerScores = {0, 0, 0};
-//	}
-//
-//	public Scores score;
+	[Header("Game Info")]
+	[SerializeField]
+	int[] playerScores = {0, 0, 0};
+	[SerializeField]
+	int idolsRemaining = 10;
+	[SerializeField]
+	int roundNumber = 1;
+
+	[Header("Gameplay")]
+	public int spawnDelay = 1;
+	public int pointsPerIdol = 2;
+
+	[Header("Setup")]
+	public Sprite[] godSprites = new Sprite[3];
+	public Sprite[] playerSprites = new Sprite[3];
 	public GameObject playerPrefab;
 	public GameObject idolPrefab;
 	public GameObject playerSpawn;
 	public GameObject idolSpawn;
-	public int spawnDelay = 1;
-	public int pointsPerIdol = 2;
-
-	[SerializeField]
-	int[] playerScores = {0, 0, 0};
 
 //	GameObject leftPlayerSpawn = null;
 //	GameObject rightPlayerSpawn = null;
@@ -41,11 +45,13 @@ public class GameMaster : MonoBehaviour {
 		int idolBonusPoints = idol.getDamage ();
 		playerScores [playerNum] += pointsPerIdol + idolBonusPoints;
 		Destroy (idol.gameObject);
+		idolsRemaining--;
 		StartCoroutine (RespawnIdol());
 	}
 
 	public static void BreakIdol(Idol idol){
 		Destroy (idol.gameObject);
+		gm.idolsRemaining--;
 		gm.StartCoroutine (gm.RespawnIdol());
 	}
 
