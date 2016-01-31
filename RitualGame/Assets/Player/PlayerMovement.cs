@@ -56,12 +56,20 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (GameMaster.gm.paused) { return; }
+		//Update grounded
 		RaycastHit2D hit = Physics2D.BoxCast (body.position, 0.9f*col.size, 0f, Vector2.down, 0.5f, LayerMask.GetMask("Solid"));
 		grounded = ((hit.collider != null) && !jump);
 
+		//Animations
+		anim.SetBool ("Grounded", grounded);
+		anim.SetFloat ("SpeedX", Mathf.Abs (body.velocity.x));
+		anim.SetFloat ("SpeedY", body.velocity.y);
+		anim.SetBool ("Carrying", hasIdol);
+
+		if (GameMaster.gm.paused) { return; }
+
 		//Turning
-		if (grounded && (Mathf.Abs(Input.GetAxis("Horizontal"+controlNum.ToString())) > 0.1f)) {
+		if (grounded && (Mathf.Abs(Input.GetAxis("Horizontal"+controlNum.ToString())) > 0.2f)) {
 			GetComponentInChildren<SpriteRenderer> ().flipX = (Input.GetAxis("Horizontal"+controlNum.ToString()) < 0.0f);
 		}
 
