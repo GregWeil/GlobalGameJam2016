@@ -51,7 +51,7 @@ public class GodHandAnimation : MonoBehaviour {
 			hand.rotation = Quaternion.AngleAxis (handAngle, Vector3.forward);
 		}
 
-        handMat.SetFloat("_Cutoff", cutoff.position.y);
+        handMat.SetFloat("_CloudHeight", cutoff.position.y);
         handShadowMat.SetFloat("_CloudHeight", cutoff.position.y);
     }
 
@@ -82,9 +82,11 @@ public class GodHandAnimation : MonoBehaviour {
 
 	public void Open() {
 		handRen.sprite = handOpen;
+        handShadowMat.mainTextureOffset = new Vector2(0f, 0f);
 	}
 
 	public void Close() {
 		handRen.sprite = handClosed;
-	}
+        handShadowMat.mainTextureOffset = new Vector2(0.5f, 0f);
+    }
 }
