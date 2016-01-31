@@ -90,7 +90,7 @@ Material:
       data:
         first:
           name: _Cutoff
-        second: 10
+        second: 0
       data:
         first:
           name: PixelSnap
