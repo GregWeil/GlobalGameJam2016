@@ -28,7 +28,7 @@ GameObject:
   - 4: {fileID: 470064}
   - 212: {fileID: 21221632}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ Transform:
   m_GameObject: {fileID: 120330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 466528}
   m_RootOrder: 1
@@ -145,10 +145,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageSprites:
-  - {fileID: 21300000, guid: 6cc7462d2760d40aeac61672c63ec430, type: 3}
-  - {fileID: 21300000, guid: 54a2d8d5d189a4e55ac4bb253de92a17, type: 3}
-  - {fileID: 21300000, guid: a71672f4455f04dd9a4e52eddbb88567, type: 3}
-  - {fileID: 21300000, guid: 424dd01562cd74680adee2ee3f4d588f, type: 3}
+  - {fileID: 21300000, guid: 8f5ae7ca3fed486439bcd32dd821265c, type: 3}
+  - {fileID: 21300002, guid: 8f5ae7ca3fed486439bcd32dd821265c, type: 3}
+  - {fileID: 21300004, guid: 8f5ae7ca3fed486439bcd32dd821265c, type: 3}
+  - {fileID: 21300006, guid: 8f5ae7ca3fed486439bcd32dd821265c, type: 3}
   baseDropForce: 120
   pickupDelay: 2
   isHeld: 0
@@ -181,7 +181,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6cc7462d2760d40aeac61672c63ec430, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8f5ae7ca3fed486439bcd32dd821265c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -195,7 +195,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6cc7462d2760d40aeac61672c63ec430,
+      objectReference: {fileID: 21300000, guid: 8f5ae7ca3fed486439bcd32dd821265c,
         type: 3}
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.z
@@ -207,11 +207,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: clean
@@ -260,23 +260,31 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: damageSprites.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: 6cc7462d2760d40aeac61672c63ec430,
+      objectReference: {fileID: 21300000, guid: 8f5ae7ca3fed486439bcd32dd821265c,
         type: 3}
     - target: {fileID: 0}
       propertyPath: damageSprites.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: 54a2d8d5d189a4e55ac4bb253de92a17,
+      objectReference: {fileID: 21300002, guid: 8f5ae7ca3fed486439bcd32dd821265c,
         type: 3}
     - target: {fileID: 0}
       propertyPath: damageSprites.Array.data[2]
       value: 
-      objectReference: {fileID: 21300000, guid: a71672f4455f04dd9a4e52eddbb88567,
+      objectReference: {fileID: 21300004, guid: 8f5ae7ca3fed486439bcd32dd821265c,
         type: 3}
     - target: {fileID: 0}
       propertyPath: damageSprites.Array.data[3]
       value: 
-      objectReference: {fileID: 21300000, guid: 424dd01562cd74680adee2ee3f4d588f,
+      objectReference: {fileID: 21300006, guid: 8f5ae7ca3fed486439bcd32dd821265c,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Name
+      value: Sprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 113770}
