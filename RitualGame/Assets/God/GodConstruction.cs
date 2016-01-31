@@ -53,24 +53,27 @@ public class GodConstruction : MonoBehaviour {
 						anim.Open ();
 					}
 				}
-			} else if (Input.GetMouseButtonDown(0) && anim.IsReady() && !animHasBlock) {
-                //We aren't holding something, either spawn or grab
-                if (col == null) {
-					selectedBlock = (GameObject)Instantiate(block, pos, Quaternion.identity);
+			} else if (Input.GetMouseButtonDown (0) && anim.IsRetracted() && !animHasBlock) {
+				//We aren't holding something, either spawn or grab
+				if (col == null) {
+					selectedBlock = (GameObject)Instantiate (block, pos, Quaternion.identity);
 					selectedBlock.GetComponent<Collider2D> ().enabled = false;
 					selectedBlock.name = block.name;
 
 					anim.SetGoal (pos);
 					animHasBlock = true;
 					anim.Close ();
-				} else if (col.GetComponent<GodStaticItem>() == null) {
+				} else if (col.GetComponent<GodStaticItem> () == null) {
 					selectedBlock = col.gameObject;
 					selectedBlock.GetComponent<Collider2D> ().enabled = false;
 
 					anim.SetGoal (pos);
 					animHasBlock = false;
 					anim.Open ();
-                }
+				}
+				animReleasePos = pos;
+			} else if (anim.IsRetracted() && !animHasBlock) {
+				anim.SetGoalX (pos.x);
             }
 
             //Smoothly move the selector

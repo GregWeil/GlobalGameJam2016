@@ -26,6 +26,8 @@ public class GodHandAnimation : MonoBehaviour {
 		destination = position;
 		handRen = hand.GetComponentInChildren<SpriteRenderer> ();
 		handMat = handRen.material;
+
+		SetExit ();
 	}
 	
 	// Update is called once per frame
@@ -54,17 +56,25 @@ public class GodHandAnimation : MonoBehaviour {
 		destination = pos;
 	}
 
+	public void SetGoalX(float pos) {
+		destination.x = pos;
+	}
+
 	public void SetExit() {
 		destination = new Vector2 (position.x, transform.position.y + 1f);
 	}
 
 	public Vector2 GetPosition() {
-		return position;
+		return new Vector2(position.x, Mathf.Min(position.y, transform.position.y));
 	}
 
 	public bool IsReady() {
 		if ((position.y >= cloud.position.y) && (destination.y > position.y)) return true;
 		return (Vector2.Distance (position, destination) <= 0.1f);
+	}
+
+	public bool IsRetracted() {
+		return (position.y >= (transform.position.y + 0.75f));
 	}
 
 	public void Open() {
