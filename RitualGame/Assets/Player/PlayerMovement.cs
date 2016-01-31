@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour {
 	public float moveSpeed = 1.0f;
 	public float moveAccel = 1.0f;
 
-	public float idolSlow = 0.6f;
+	public float idolSlow = 0.8f;
 
 	public float jumpForce = 1.0f;
     public float jumpCarry = 1.0f;
@@ -25,14 +25,14 @@ public class PlayerMovement : MonoBehaviour {
 
 	float stun = 1.0f;
 
-	CircleCollider2D col = null;
+	BoxCollider2D col = null;
 	Rigidbody2D body = null;
 
 	Animator anim = null;
 
 	// Use this for initialization
 	void Start () {
-		col = GetComponent<CircleCollider2D> ();
+		col = GetComponent<BoxCollider2D> ();
 		body = GetComponent<Rigidbody2D> ();
 		anim = GetComponentInChildren<Animator> ();
 	}
@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (GameMaster.gm.paused) { return; }
-		RaycastHit2D hit = Physics2D.CircleCast (body.position, 0.9f*col.radius, Vector2.down, 0.1f, LayerMask.GetMask("Solid"));
+		RaycastHit2D hit = Physics2D.BoxCast (body.position, 0.9f*col.size, 0f, Vector2.down, 0.5f, LayerMask.GetMask("Solid"));
 		grounded = ((hit.collider != null) && !jump);
 
 		//Turning
