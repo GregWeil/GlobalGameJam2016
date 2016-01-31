@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
+		if (GameMaster.gm.paused) { return; }
 		body.AddForce (gravity - Physics2D.gravity);
 		float goalSpeed = (Input.GetAxis("Horizontal"+controlNum.ToString()) * moveSpeed / stun);
 		if (hasIdol) goalSpeed *= idolSlow;
@@ -55,6 +56,7 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (GameMaster.gm.paused) { return; }
 		RaycastHit2D hit = Physics2D.CircleCast (body.position, 0.9f*col.radius, Vector2.down, 0.1f, LayerMask.GetMask("Solid"));
 		grounded = ((hit.collider != null) && !jump);
 

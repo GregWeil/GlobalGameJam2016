@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 496298}
   - 114: {fileID: 11476334}
-  - 114: {fileID: 11434226}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -29,36 +28,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11434226
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 116154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d51db80b97a454aacb743d9464e21a93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 0}
-  idolPrefab: {fileID: 0}
-  idolSpawn: {fileID: 0}
-  godOpenSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  godClosedSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  totemSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  playerIdle:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &11476334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -77,7 +46,11 @@ MonoBehaviour:
   spawnDelay: 2
   pointsPerIdol: 2
   idolsPerRound: 10
-  reticles: {fileID: 0}
+  paused: 1
+  godReticles:
+  - {fileID: 2100000, guid: 3aff3ea31439e4bc68536cf7b5e352da, type: 2}
+  - {fileID: 2100000, guid: e1c3a92aa20758740b7a50d7807c626a, type: 2}
+  - {fileID: 2100000, guid: 711e6b70c610a42cf8431a9192748cc5, type: 2}
   godOpenSprites:
   - {fileID: 21300000, guid: 131afe9353dc32c40a3184cc170b84d6, type: 3}
   - {fileID: 21300000, guid: c65aafbc41f300f49b2efff64c0d0b67, type: 3}
@@ -86,10 +59,10 @@ MonoBehaviour:
   - {fileID: 21300002, guid: 131afe9353dc32c40a3184cc170b84d6, type: 3}
   - {fileID: 21300002, guid: c65aafbc41f300f49b2efff64c0d0b67, type: 3}
   - {fileID: 21300002, guid: 106c02e1c974b124f8e2865678a07a1e, type: 3}
-  playerSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  playerAnimations:
+  - {fileID: 9100000, guid: db6a4e9f86359754380a092724e53dd1, type: 2}
+  - {fileID: 9100000, guid: 6613e8f1c5c606a42a55a82b9931c43b, type: 2}
+  - {fileID: 9100000, guid: 3cf9f91be5792a749b25a88add4da5eb, type: 2}
   totemSprites:
   - {fileID: 0}
   - {fileID: 0}
@@ -142,6 +115,34 @@ Prefab:
       value: 
       objectReference: {fileID: 21300002, guid: 106c02e1c974b124f8e2865678a07a1e,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: playerAnimations.Array.data[0]
+      value: 
+      objectReference: {fileID: 9100000, guid: db6a4e9f86359754380a092724e53dd1, type: 2}
+    - target: {fileID: 0}
+      propertyPath: playerAnimations.Array.data[1]
+      value: 
+      objectReference: {fileID: 9100000, guid: 6613e8f1c5c606a42a55a82b9931c43b, type: 2}
+    - target: {fileID: 0}
+      propertyPath: playerAnimations.Array.data[2]
+      value: 
+      objectReference: {fileID: 9100000, guid: 3cf9f91be5792a749b25a88add4da5eb, type: 2}
+    - target: {fileID: 0}
+      propertyPath: godReticles.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3aff3ea31439e4bc68536cf7b5e352da, type: 2}
+    - target: {fileID: 0}
+      propertyPath: godReticles.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: e1c3a92aa20758740b7a50d7807c626a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: godReticles.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 711e6b70c610a42cf8431a9192748cc5, type: 2}
+    - target: {fileID: 0}
+      propertyPath: paused
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 116154}
