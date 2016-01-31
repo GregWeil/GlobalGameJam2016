@@ -1,0 +1,232 @@
+fileFormatVersion: 2
+guid: 6b32238895b645e428aacb3540749ad1
+timeCreated: 1454263990
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: poof_strip5_0
+    21300002: poof_strip5_1
+    21300004: poof_strip5_2
+    21300006: poof_strip5_3
+    21300008: poof_strip5_4
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: poof_strip5_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -50, y: 71}
+        - {x: -105, y: -4}
+        - {x: -105, y: -59}
+        - {x: -74, y: -116}
+        - {x: 6, y: -116}
+        - {x: 70, y: -92}
+        - {x: 70, y: 4}
+        - {x: 36, y: 71}
+    - name: poof_strip5_1
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 95.099976, y: -147}
+        - {x: 130.09998, y: -132}
+        - {x: 145.09998, y: -120}
+        - {x: 148.09998, y: -95}
+        - {x: 135.09998, y: -45}
+        - {x: 160.09998, y: -12}
+        - {x: 160.09998, y: 35}
+        - {x: 151.09998, y: 49}
+        - {x: 117.099976, y: 76}
+        - {x: 127.099976, y: 105}
+        - {x: 128.09998, y: 115}
+        - {x: 110.099976, y: 148}
+        - {x: 41.099976, y: 160}
+        - {x: 10.099976, y: 171}
+        - {x: -12.900024, y: 171}
+        - {x: -27.900024, y: 166}
+        - {x: -48.900024, y: 156}
+        - {x: -85.900024, y: 147}
+        - {x: -116.900024, y: 144}
+        - {x: -148.90002, y: 123}
+        - {x: -162.90002, y: 91}
+        - {x: -168.90002, y: 42}
+        - {x: -151.90002, y: 11}
+        - {x: -144.90002, y: -32}
+        - {x: -166.90002, y: -41}
+        - {x: -183.90002, y: -68}
+        - {x: -183.90002, y: -83}
+        - {x: -181.90002, y: -88}
+        - {x: -170.90002, y: -100}
+        - {x: -125.900024, y: -123}
+        - {x: -124.900024, y: -170}
+        - {x: -112.900024, y: -186}
+        - {x: -81.900024, y: -200}
+        - {x: -19.900024, y: -200}
+        - {x: 25.099976, y: -188}
+        - {x: 72.099976, y: -173}
+        - {x: 89.099976, y: -161}
+    - name: poof_strip5_2
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 149.19995, y: -58}
+        - {x: 168.19995, y: -25}
+        - {x: 168.19995, y: 71}
+        - {x: 142.19995, y: 133}
+        - {x: 125.19995, y: 143}
+        - {x: 79.19995, y: 143}
+        - {x: 10.199951, y: 79}
+        - {x: -19.800049, y: -7}
+        - {x: -36.80005, y: -26}
+        - {x: -63.80005, y: -46}
+        - {x: -113.80005, y: -55}
+        - {x: -144.80005, y: -122}
+        - {x: -144.80005, y: -149}
+        - {x: -120.80005, y: -180}
+        - {x: -117.80005, y: -181}
+        - {x: 5.199951, y: -181}
+        - {x: 25.199951, y: -171}
+        - {x: 37.19995, y: -147}
+        - {x: 20.199951, y: -85}
+        - {x: 120.19995, y: -74}
+      - - {x: -59.80005, y: 175}
+        - {x: -95.80005, y: 175}
+        - {x: -130.80005, y: 169}
+        - {x: -169.80005, y: 123}
+        - {x: -169.80005, y: 45}
+        - {x: -153.80005, y: -6}
+        - {x: -35.80005, y: -6}
+        - {x: 5.199951, y: 50}
+        - {x: 5.199951, y: 145}
+        - {x: -22.800049, y: 166}
+    - name: poof_strip5_3
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -85.70007, y: -107}
+        - {x: -132.70007, y: -144}
+        - {x: -132.70007, y: -176}
+        - {x: -126.70007, y: -182}
+        - {x: -65.70007, y: -182}
+        - {x: -32.700073, y: -177}
+        - {x: -32.700073, y: -110}
+        - {x: -40.700073, y: -107}
+      - - {x: 84.29993, y: 151}
+        - {x: 63.299927, y: 143}
+        - {x: 53.299927, y: 66}
+        - {x: 53.299927, y: 4}
+        - {x: 61.299927, y: -7}
+        - {x: 150.29993, y: -7}
+        - {x: 181.29993, y: 46}
+        - {x: 181.29993, y: 112}
+        - {x: 147.29993, y: 151}
+      - - {x: -137.70007, y: 187}
+        - {x: -137.70007, y: 77}
+        - {x: -101.70007, y: 60}
+        - {x: -46.700073, y: 60}
+        - {x: -46.700073, y: 146}
+        - {x: -56.700073, y: 187}
+    - name: poof_strip5_4
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 108.3999, y: 105}
+        - {x: 96.3999, y: 88}
+        - {x: 96.3999, y: 50}
+        - {x: 97.3999, y: 49}
+        - {x: 107.3999, y: 43}
+        - {x: 132.3999, y: 43}
+        - {x: 147.3999, y: 50}
+        - {x: 147.3999, y: 97}
+        - {x: 137.3999, y: 105}
+      - - {x: -99.6001, y: 127}
+        - {x: -103.6001, y: 126}
+        - {x: -103.6001, y: 96}
+        - {x: -98.6001, y: 95}
+        - {x: -80.6001, y: 95}
+        - {x: -72.6001, y: 104}
+        - {x: -72.6001, y: 121}
+        - {x: -79.6001, y: 127}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

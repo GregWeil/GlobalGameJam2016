@@ -9,6 +9,9 @@ public class Idol : MonoBehaviour {
 	public bool isHeld = false;
 	public PlayerMovement lastPlayer = null;
 
+	public GameObject breakEffect;
+	public AudioSource damageSound;
+
 	GameObject spawnPoint;
 	BoxCollider2D box = null;
 	Rigidbody2D body = null;
@@ -82,9 +85,11 @@ public class Idol : MonoBehaviour {
 		damage += dam;
 		Debug.Log ("Damage = " + damage);
 		if (damage > 3) {
+			Instantiate (breakEffect, transform.position, transform.rotation);
 			GameMaster.BreakIdol (this);
 		} else {
 			GetComponentInChildren<SpriteRenderer> ().sprite = damageSprites [damage];
+			damageSound.Play ();
 		}
 	}
 
