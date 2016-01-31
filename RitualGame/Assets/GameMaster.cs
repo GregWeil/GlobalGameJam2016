@@ -36,6 +36,8 @@ public class GameMaster : MonoBehaviour {
 	public GameObject idolPrefab;
 	public GameObject idolSpawn;
 
+
+	Color[] plColors = { Color.blue, Color.green, Color.red };
 	int[,] rounds = {
 		//player #s, not control #s
 		//{ left-tribesman, god, right-tribesman }
@@ -59,6 +61,10 @@ public class GameMaster : MonoBehaviour {
 	Text roundText = null;
 	Text startRoundText = null;
 	Text endText = null;
+	TextMesh idolCount = null;
+	TextMesh leftTotemScore = null;
+	TextMesh rightTotemScore = null;
+	Text godScore = null;
 
 	//TODO: UI on totems/pedestal (once sprites are in)
 
@@ -69,9 +75,11 @@ public class GameMaster : MonoBehaviour {
 		Debug.Assert (totems.Length == 2);
 		foreach (GameObject tt in totems) {
 			if (tt.transform.position.x < 0) {
-				leftTotem = tt.GetComponent<SpriteRenderer> ();
+				leftTotem = tt.GetComponentInChildren<SpriteRenderer> ();
+				leftTotemScore = tt.GetComponentInChildren<TextMesh> ();
 			} else {
-				rightTotem = tt.GetComponent<SpriteRenderer> ();
+				rightTotem = tt.GetComponentInChildren<SpriteRenderer> ();
+				rightTotemScore = tt.GetComponentInChildren<TextMesh> ();
 			}
 		}
 		PlayerSpawnPoint[] spawns = GameObject.FindObjectsOfType<PlayerSpawnPoint> ();
@@ -94,6 +102,8 @@ public class GameMaster : MonoBehaviour {
 			}
 		}
 
+		godScore = GameObject.Find ("GodScore").GetComponent<Text> ();
+		idolCount = GameObject.Find ("Pedestal").GetComponentInChildren<TextMesh> ();
 		pauseText = GameObject.Find ("PauseText").GetComponent<Text> ();
 		pauseText.enabled = false;
 		titleText = GameObject.Find ("TitleText").GetComponent<Text> ();
@@ -115,6 +125,10 @@ public class GameMaster : MonoBehaviour {
 		}
 		if (!gameOver && Input.GetButtonDown ("Pause")) { PauseGame (); }
 		if (!roundRunning && Input.GetButtonDown ("Start")) { EndRoundBreak (); }
+		leftTotemScore.text = "" + playerScores[rounds[roundNumber,0]];
+		godScore.text = "" + playerScores[rounds[roundNumber,1]];
+		rightTotemScore.text = "" + playerScores[rounds[roundNumber,2]];
+		idolCount.text = "" + idolsRemaining;
 	}
 
 //====================================================================================
@@ -135,6 +149,7 @@ public class GameMaster : MonoBehaviour {
 //====================================================================================
 
 	public void RoundBreak(){
+		roundRunning = false;
 		paused = true;
 		roundText.text = "Round " + roundNumber;
 		roundText.enabled = true;
@@ -147,6 +162,7 @@ public class GameMaster : MonoBehaviour {
 		titleText.enabled = false;
 		roundText.enabled = false;
 		startRoundText.enabled = false;
+		roundRunning = true;
 		paused = false;
 	}
 
@@ -179,11 +195,14 @@ public class GameMaster : MonoBehaviour {
 		//set sprites
 		leftPlayer.GetComponentInChildren<Animator>().runtimeAnimatorController = playerAnimations[rounds[roundNumber,0]];
 		leftTotem.sprite = totemSprites[rounds[roundNumber,0]];
+		leftTotemScore.color = plColors[rounds[roundNumber,0]];
 		godPlayer.handOpen = godOpenSprites[rounds[roundNumber,1]];
 		godPlayer.handClosed = godClosedSprites[rounds[roundNumber,1]];
+		godScore.color = plColors[rounds[roundNumber,1]];
 		godPlayer.GetComponentInChildren<MeshRenderer>().material = godReticles[rounds[roundNumber,1]];
 		rightPlayer.GetComponentInChildren<Animator>().runtimeAnimatorController = playerAnimations[rounds[roundNumber,2]];
 		rightTotem.sprite = totemSprites[rounds[roundNumber,2]];
+		rightTotemScore.color = plColors[rounds[roundNumber,2]];
 
 		RoundBreak ();
 		Debug.Log ("Left: Player " + playerRoles.x + ", God: Player " + playerRoles.y + ", Right: Player " + playerRoles.z);
