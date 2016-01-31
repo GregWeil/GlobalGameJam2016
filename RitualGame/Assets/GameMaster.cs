@@ -38,6 +38,7 @@ public class GameMaster : MonoBehaviour {
 	public GameObject idolSpawn;
 	public AudioClip[] roundAudio = new AudioClip[6];
 	public AudioClip whistle;
+	public AudioSource scoreSound;
 
 
 	Color[] plColors = { Color.blue, Color.green, Color.red };
@@ -265,6 +266,7 @@ public class GameMaster : MonoBehaviour {
 		idolsRemaining--;
 		StartCoroutine (RespawnIdol());
 		UpdateDisplays ();
+		scoreSound.Play ();
 	}
 
 //====================================================================================
