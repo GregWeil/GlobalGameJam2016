@@ -2,9 +2,6 @@
 using System.Collections;
 
 public class PlayerAttack : MonoBehaviour {
-
-	public int playerNum = 0;
-
 	float attackRadius = 0.3f;
 	float attackRange = 0.8f;
 
@@ -12,16 +9,18 @@ public class PlayerAttack : MonoBehaviour {
 
 	Collider2D col = null;
 	Rigidbody2D body = null;
+	int controlNum;
 
 	// Use this for initialization
 	void Start () {
 		col = GetComponent<Collider2D> ();
 		body = GetComponent<Rigidbody2D> ();
+		controlNum = GetComponent<PlayerMovement> ().controlNum;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetButtonDown ("Attack" + playerNum.ToString ())) {
+		if (Input.GetButtonDown ("Attack" + controlNum.ToString ())) {
 			Vector2 dir = GetComponentInChildren<SpriteRenderer> ().flipX ? Vector2.left : Vector2.right;
 			var hits = Physics2D.CircleCastAll (body.position, attackRadius, dir, attackRange, LayerMask.GetMask ("Player"));
 			foreach (var hit in hits) {
