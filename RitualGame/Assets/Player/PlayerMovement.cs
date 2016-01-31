@@ -2,8 +2,10 @@
 using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
-
+	[Range(0,2)]
 	public int playerNum = 0;
+	[Range(0,1)]
+	public int controlNum;
 
 	public float moveSpeed = 1.0f;
 	public float moveAccel = 1.0f;
@@ -32,14 +34,14 @@ public class PlayerMovement : MonoBehaviour {
 
 	void FixedUpdate () {
 		body.AddForce (gravity - Physics2D.gravity);
-		float goalSpeed = (Input.GetAxis("Horizontal"+playerNum.ToString()) * moveSpeed / stun);
+		float goalSpeed = (Input.GetAxis("Horizontal"+controlNum.ToString()) * moveSpeed / stun);
 		float force = ((goalSpeed - body.velocity.x) * moveAccel);
 		if (!grounded) force /= stun;
 		body.AddForce(new Vector2(force, 0));
 
 		if (jump) {
 			body.AddForce(new Vector2(0, jumpForce / stun), ForceMode2D.Impulse);
-        } else if (Input.GetButton("Jump" + playerNum.ToString()) && !grounded) {
+        } else if (Input.GetButton("Jump" + controlNum.ToString()) && !grounded) {
             body.AddForce(new Vector2(0, jumpCarry));
         }
         jump = false;
@@ -52,11 +54,11 @@ public class PlayerMovement : MonoBehaviour {
 
 		//Turning
 		if (grounded && (Mathf.Abs(Input.GetAxis("Horizontal"+playerNum.ToString())) > 0.1f)) {
-			GetComponentInChildren<SpriteRenderer> ().flipX = (Input.GetAxis("Horizontal"+playerNum.ToString()) < 0.0f);
+			GetComponentInChildren<SpriteRenderer> ().flipX = (Input.GetAxis("Horizontal"+controlNum.ToString()) < 0.0f);
 		}
 
 		//Jumping
-		if (Input.GetButtonDown ("Jump" + playerNum.ToString ()) && grounded) {
+		if (Input.GetButtonDown ("Jump" + controlNum.ToString ()) && grounded) {
 			jump = true;
 		}
 
