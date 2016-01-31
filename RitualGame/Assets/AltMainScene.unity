@@ -301,6 +301,21 @@ MonoBehaviour:
 Transform:
   m_PrefabParentObject: {fileID: 429786, guid: d015c30d4c1928e45a3700db46ba268c, type: 2}
   m_PrefabInternal: {fileID: 909118617}
+--- !u!1 &379292001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 450819618}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 450819619}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1001 &403777253
 Prefab:
   m_ObjectHideFlags: 0
@@ -487,10 +502,18 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: efa7c1ceceb5e45519af36e1f800c752, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &450819619 stripped
+--- !u!4 &450819619
 Transform:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 450819618}
+  m_GameObject: {fileID: 379292001}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 828450902}
+  m_RootOrder: 0
 --- !u!1 &471590545
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,6 +954,34 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cf17c61522a81451b92790e92fbd1bb3, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &828450901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 450819618}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 828450902}
+  m_Layer: 0
+  m_Name: Missing Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &828450902
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 450819618}
+  m_GameObject: {fileID: 828450901}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 450819619}
+  m_Father: {fileID: 930609748}
+  m_RootOrder: 1
 --- !u!1001 &892415418
 Prefab:
   m_ObjectHideFlags: 0
@@ -1061,7 +1112,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 471590546}
-  - {fileID: 450819619}
+  - {fileID: 828450902}
   - {fileID: 718187031}
   - {fileID: 1352873685}
   - {fileID: 3738124}

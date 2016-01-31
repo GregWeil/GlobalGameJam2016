@@ -36,6 +36,8 @@ public class GameMaster : MonoBehaviour {
 	public GameObject playerPrefab;
 	public GameObject idolPrefab;
 	public GameObject idolSpawn;
+	public AudioClip[] roundAudio = new AudioClip[6];
+	public AudioClip whistle;
 
 
 	Color[] plColors = { Color.blue, Color.green, Color.red };
@@ -68,14 +70,20 @@ public class GameMaster : MonoBehaviour {
 	Text godScore = null;
 	AudioSource menuMusic = null;
 	AudioSource roundMusic = null;
+	AudioSource roundBreakAudio = null;
+	AudioSource endWhistle = null;
 
 //====================================================================================
 
 	void Start(){
 		menuMusic = GameObject.Find("MenuMusic").GetComponent<AudioSource> ();
 		roundMusic = GameObject.Find("RoundMusic").GetComponent<AudioSource> ();
+		roundBreakAudio = GameObject.Find("RoundStart").GetComponent<AudioSource> ();
+		endWhistle = GameObject.Find ("Whistle").GetComponent<AudioSource> ();
 		menuMusic.Play ();
 		roundMusic.Stop ();
+		roundBreakAudio.Stop ();
+		endWhistle.Stop ();
 
 		GameObject[] totems = GameObject.FindGameObjectsWithTag ("Totem");
 		Debug.Assert (totems.Length == 2);
@@ -125,6 +133,7 @@ public class GameMaster : MonoBehaviour {
 
 	void Update(){
 		if(idolsRemaining <= 0){
+			endWhistle.Play ();
 			if (roundNumber >= 6) { 
 				EndGame ();
 			} else{
@@ -231,6 +240,9 @@ public class GameMaster : MonoBehaviour {
 		rightTotem.sprite = totemSprites[rounds[roundNumber,2]];
 		rightTotemScore.color = plColors[rounds[roundNumber,2]];
 		UpdateDisplays ();
+
+		roundBreakAudio.clip = roundAudio[roundNumber-1];
+		roundBreakAudio.Play ();
 		RoundBreak ();
 		Debug.Log ("Left: Player " + playerRoles.x + ", God: Player " + playerRoles.y + ", Right: Player " + playerRoles.z);
 	}
