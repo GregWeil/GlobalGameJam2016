@@ -1,0 +1,249 @@
+fileFormatVersion: 2
+guid: 13759047cce9d27439018deb79ad5380
+timeCreated: 1454214658
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: green_run_strip8_0
+    21300002: green_run_strip8_1
+    21300004: green_run_strip8_2
+    21300006: green_run_strip8_3
+    21300008: green_run_strip8_4
+    21300010: green_run_strip8_5
+    21300012: green_run_strip8_6
+    21300014: green_run_strip8_7
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: green_run_strip8_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -118, y: 159}
+        - {x: -118, y: 7}
+        - {x: -88, y: 6}
+        - {x: -48, y: 17}
+        - {x: -91, y: 3}
+        - {x: -105, y: -24}
+        - {x: -118, y: -47}
+        - {x: -118, y: -57}
+        - {x: -117, y: -60}
+        - {x: 29, y: -92}
+        - {x: 70, y: -92}
+        - {x: 104, y: -52}
+        - {x: 104, y: 133}
+        - {x: 84, y: 159}
+    - name: green_run_strip8_1
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 109.214294, y: -76}
+        - {x: 110.214294, y: -69}
+        - {x: 110.214294, y: 49}
+        - {x: 17.214294, y: 168}
+        - {x: -87.785706, y: 168}
+        - {x: -91.785706, y: 92}
+        - {x: -91.785706, y: -115}
+        - {x: 33.214294, y: -138}
+        - {x: 75.214294, y: -138}
+        - {x: 92.214294, y: -114}
+        - {x: 110.214294, y: -88}
+        - {x: 110.214294, y: -80}
+    - name: green_run_strip8_2
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -53.07141, y: 116}
+        - {x: -82.07141, y: 87}
+        - {x: -82.07141, y: -102}
+        - {x: -51.07141, y: -179}
+        - {x: 68.92859, y: -179}
+        - {x: 68.92859, y: 93}
+        - {x: 18.928589, y: 116}
+    - name: green_run_strip8_3
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 0
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 98.14288, y: -138}
+        - {x: 98.14288, y: 73}
+        - {x: 58.142883, y: 125}
+        - {x: -33.857117, y: 125}
+        - {x: -35.857117, y: 124}
+        - {x: -57.857117, y: 65}
+        - {x: -51.857117, y: 31}
+        - {x: -40.857117, y: 38}
+        - {x: -32.857117, y: -80}
+        - {x: -27.857117, y: -83}
+        - {x: -25.857117, y: -83}
+        - {x: -27.857117, y: -83}
+        - {x: -33.857117, y: -90}
+        - {x: -35.857117, y: -95}
+        - {x: -59.857117, y: -133}
+        - {x: -59.857117, y: -146}
+        - {x: -55.857117, y: -154}
+        - {x: -3.8571167, y: -171}
+        - {x: 7.1428833, y: -171}
+        - {x: 9.142883, y: -170}
+        - {x: 8.142883, y: -165}
+        - {x: 5.1428833, y: -158}
+        - {x: 97.14288, y: -142}
+    - name: green_run_strip8_4
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 0
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.642822, y: 157}
+        - {x: -100.64282, y: 130}
+        - {x: -25.642822, y: 2}
+        - {x: -16.642822, y: -5}
+        - {x: -91.64282, y: -5}
+        - {x: -107.64282, y: -51}
+        - {x: -107.64282, y: -80}
+        - {x: -102.64282, y: -83}
+        - {x: -84.64282, y: -85}
+        - {x: 60.357178, y: -85}
+        - {x: 104.35718, y: -56}
+        - {x: 104.35718, y: 5}
+        - {x: 80.35718, y: 118}
+        - {x: 8.357178, y: 157}
+    - name: green_run_strip8_5
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 0
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20.928467, y: 170}
+        - {x: -98.92847, y: 170}
+        - {x: -105.92847, y: 77}
+        - {x: -105.92847, y: -91}
+        - {x: 47.071533, y: -134}
+        - {x: 102.07153, y: -134}
+        - {x: 126.07153, y: -122}
+        - {x: 126.07153, y: -21}
+        - {x: 60.071533, y: 120}
+    - name: green_run_strip8_6
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 0
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33.714233, y: 117}
+        - {x: -60.714233, y: 112}
+        - {x: -80.71423, y: 89}
+        - {x: -80.71423, y: -140}
+        - {x: -70.71423, y: -179}
+        - {x: 60.285767, y: -179}
+        - {x: 63.285767, y: -175}
+        - {x: 63.285767, y: 92}
+        - {x: 35.285767, y: 117}
+    - name: green_run_strip8_7
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 0
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -30.999878, y: 124}
+        - {x: -66.99988, y: 92}
+        - {x: -66.99988, y: -170}
+        - {x: -59.999878, y: -174}
+        - {x: 46.000122, y: -174}
+        - {x: 102.00012, y: -132}
+        - {x: 102.00012, y: 38}
+        - {x: 27.000122, y: 124}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

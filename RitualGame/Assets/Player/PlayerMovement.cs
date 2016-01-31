@@ -5,10 +5,12 @@ public class PlayerMovement : MonoBehaviour {
 	[Range(0,2)]
 	public int playerNum = 0;
 	[Range(0,1)]
-	public int controlNum;
+	public int controlNum = 0;
 
 	public float moveSpeed = 1.0f;
 	public float moveAccel = 1.0f;
+
+	public float idolSlow = 0.6f;
 
 	public float jumpForce = 1.0f;
     public float jumpCarry = 1.0f;
@@ -26,15 +28,19 @@ public class PlayerMovement : MonoBehaviour {
 	CircleCollider2D col = null;
 	Rigidbody2D body = null;
 
+	Animator anim = null;
+
 	// Use this for initialization
 	void Start () {
 		col = GetComponent<CircleCollider2D> ();
 		body = GetComponent<Rigidbody2D> ();
+		anim = GetComponentInChildren<Animator> ();
 	}
 
 	void FixedUpdate () {
 		body.AddForce (gravity - Physics2D.gravity);
 		float goalSpeed = (Input.GetAxis("Horizontal"+controlNum.ToString()) * moveSpeed / stun);
+		if (hasIdol) goalSpeed *= idolSlow;
 		float force = ((goalSpeed - body.velocity.x) * moveAccel);
 		if (!grounded) force /= stun;
 		body.AddForce(new Vector2(force, 0));
@@ -53,7 +59,7 @@ public class PlayerMovement : MonoBehaviour {
 		grounded = ((hit.collider != null) && !jump);
 
 		//Turning
-		if (grounded && (Mathf.Abs(Input.GetAxis("Horizontal"+playerNum.ToString())) > 0.1f)) {
+		if (grounded && (Mathf.Abs(Input.GetAxis("Horizontal"+controlNum.ToString())) > 0.1f)) {
 			GetComponentInChildren<SpriteRenderer> ().flipX = (Input.GetAxis("Horizontal"+controlNum.ToString()) < 0.0f);
 		}
 
@@ -64,36 +70,38 @@ public class PlayerMovement : MonoBehaviour {
 
 		//Recovery
 		stun = Mathf.MoveTowards(stun, 1.0f, 5.0f * Time.deltaTime);
+
+		//Animations
+		anim.SetBool ("Grounded", grounded);
+		anim.SetFloat ("SpeedX", Mathf.Abs (body.velocity.x));
+		anim.SetFloat ("SpeedY", body.velocity.y);
+		anim.SetBool ("Carrying", hasIdol);
 	}
 
 	void Stun (float amount) {
 		stun = Mathf.Max (amount, stun);
 	}
 
-	void OnCollisionEnter2D(Collision2D coll){
+	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.gameObject.tag == "Idol" && !hasIdol) {
 			PickUpIdol(coll.gameObject.GetComponent<Idol>());
 		}
 	}
 
-	public void PickUpIdol(Idol id){
+	public void PickUpIdol(Idol id) {
 		idol = id;
 		hasIdol = idol.PickUp (this);
 	}
 
-	public void DropIdol(){
+	public void DropIdol() {
 		if (!hasIdol) { return; }
 		idol.Drop();
 		hasIdol = false;
 		idol = null;
 	}
 
+	public bool HasIdol() {
+		return hasIdol;
+	}
+
 }
-
-
-
-
-
-
-
-

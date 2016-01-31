@@ -1,0 +1,149 @@
+fileFormatVersion: 2
+guid: ad111420b8c53fa469c9e3362efa55f1
+timeCreated: 1454214467
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: red_punch_strip2_0
+    21300002: red_punch_strip2_1
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: red_punch_strip2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 900
+        height: 700
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 6, y: -236}
+        - {x: 42, y: -333}
+        - {x: 124, y: -333}
+        - {x: 177, y: -330}
+        - {x: 181, y: -324}
+        - {x: 181, y: -314}
+        - {x: 161, y: -304}
+        - {x: 93, y: -280}
+        - {x: 71, y: -160}
+        - {x: -4, y: -42}
+        - {x: 33, y: 47}
+        - {x: 113, y: 32}
+        - {x: 172, y: 63}
+        - {x: 145, y: 125}
+        - {x: 93, y: 102}
+        - {x: -6, y: 138}
+        - {x: -17, y: 179}
+        - {x: -87, y: 223}
+        - {x: -140, y: 223}
+        - {x: -176, y: 189}
+        - {x: -210, y: 108}
+        - {x: -210, y: -11}
+        - {x: -110, y: -63}
+        - {x: -120, y: -167}
+        - {x: -156, y: -331}
+        - {x: -154, y: -333}
+        - {x: -34, y: -333}
+        - {x: -6, y: -329}
+        - {x: -14, y: -316}
+        - {x: -20, y: -312}
+        - {x: -30, y: -211}
+    - name: red_punch_strip2_1
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 0
+        width: 900
+        height: 700
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 62, y: -203}
+        - {x: 28, y: -326}
+        - {x: 43, y: -328}
+        - {x: 162, y: -328}
+        - {x: 175, y: -325}
+        - {x: 184, y: -312}
+        - {x: 159, y: -299}
+        - {x: 92, y: -270}
+        - {x: 159, y: -168}
+        - {x: 101, y: -51}
+        - {x: 145, y: 19}
+        - {x: 228, y: 7}
+        - {x: 311, y: -44}
+        - {x: 362, y: -10}
+        - {x: 362, y: 63}
+        - {x: 340, y: 120}
+        - {x: 259, y: 125}
+        - {x: 224, y: 69}
+        - {x: 151, y: 76}
+        - {x: 214, y: 144}
+        - {x: 136, y: 209}
+        - {x: 68, y: 209}
+        - {x: -22, y: 159}
+        - {x: -44, y: 128}
+        - {x: -50, y: 102}
+        - {x: -24, y: 81}
+        - {x: -44, y: 29}
+        - {x: -40, y: -60}
+        - {x: 0, y: -73}
+        - {x: -89, y: -227}
+        - {x: -123, y: -317}
+        - {x: -123, y: -322}
+        - {x: -115, y: -328}
+        - {x: -26, y: -328}
+        - {x: 15, y: -322}
+        - {x: 12, y: -311}
+        - {x: 6, y: -307}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

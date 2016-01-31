@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 496298}
   - 114: {fileID: 11476334}
+  - 114: {fileID: 11434226}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -28,6 +29,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11434226
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d51db80b97a454aacb743d9464e21a93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 0}
+  idolPrefab: {fileID: 0}
+  idolSpawn: {fileID: 0}
+  godOpenSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  godClosedSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  totemSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerIdle:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &11476334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -46,6 +77,7 @@ MonoBehaviour:
   spawnDelay: 2
   pointsPerIdol: 2
   idolsPerRound: 10
+  reticles: {fileID: 0}
   godOpenSprites:
   - {fileID: 21300000, guid: 131afe9353dc32c40a3184cc170b84d6, type: 3}
   - {fileID: 21300000, guid: c65aafbc41f300f49b2efff64c0d0b67, type: 3}

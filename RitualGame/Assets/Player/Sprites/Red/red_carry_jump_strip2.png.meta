@@ -1,0 +1,134 @@
+fileFormatVersion: 2
+guid: 7ad760bd3fbacde4593e1661f92554c9
+timeCreated: 1454208821
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: red_carry_jump_strip2_0
+    21300002: red_carry_jump_strip2_1
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: red_carry_jump_strip2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: -274}
+        - {x: -14, y: -284}
+        - {x: 105, y: -340}
+        - {x: 109, y: -335}
+        - {x: 109, y: -319}
+        - {x: 51, y: -252}
+        - {x: 106, y: -152}
+        - {x: 47, y: -22}
+        - {x: 51, y: 54}
+        - {x: 107, y: 146}
+        - {x: 97, y: 261}
+        - {x: 38, y: 270}
+        - {x: -17, y: 280}
+        - {x: -46, y: 280}
+        - {x: -63, y: 270}
+        - {x: -73, y: 237}
+        - {x: -63, y: 225}
+        - {x: -88, y: 140}
+        - {x: -106, y: 56}
+        - {x: -43, y: -21}
+        - {x: -106, y: -146}
+        - {x: -87, y: -197}
+        - {x: -126, y: -251}
+        - {x: -126, y: -278}
+        - {x: -103, y: -305}
+        - {x: -31, y: -340}
+        - {x: -5, y: -340}
+        - {x: -8, y: -331}
+        - {x: -60, y: -256}
+        - {x: -24, y: -227}
+    - name: red_carry_jump_strip2_1
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 158, y: -138}
+        - {x: 150, y: -131}
+        - {x: 58, y: -119}
+        - {x: 129, y: -33}
+        - {x: 115, y: 11}
+        - {x: 3, y: 8}
+        - {x: 106, y: 136}
+        - {x: 89, y: 215}
+        - {x: 67, y: 263}
+        - {x: -51, y: 263}
+        - {x: -73, y: 233}
+        - {x: -140, y: 205}
+        - {x: -141, y: 204}
+        - {x: -141, y: 183}
+        - {x: -55, y: 139}
+        - {x: -99, y: 61}
+        - {x: -104, y: -18}
+        - {x: -22, y: -85}
+        - {x: -26, y: -204}
+        - {x: -21, y: -205}
+        - {x: 29, y: -205}
+        - {x: 116, y: -178}
+        - {x: 158, y: -145}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

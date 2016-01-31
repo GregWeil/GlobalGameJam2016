@@ -1,0 +1,313 @@
+fileFormatVersion: 2
+guid: b0453c1292d55b441a0b0faef0ecbb91
+timeCreated: 1454208886
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: red_carry_walk_strip10_0
+    21300002: red_carry_walk_strip10_1
+    21300004: red_carry_walk_strip10_2
+    21300006: red_carry_walk_strip10_3
+    21300008: red_carry_walk_strip10_4
+    21300010: red_carry_walk_strip10_5
+    21300012: red_carry_walk_strip10_6
+    21300014: red_carry_walk_strip10_7
+    21300016: red_carry_walk_strip10_8
+    21300018: red_carry_walk_strip10_9
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: red_carry_walk_strip10_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 17.5, y: -123.5}
+        - {x: 12.5, y: -122.5}
+        - {x: 7.5, y: -119.5}
+        - {x: 13.5, y: -119.5}
+        - {x: 16.5, y: -123.5}
+        - {x: 19.5, y: -123.5}
+        - {x: 21.5, y: -125.5}
+        - {x: 47.5, y: -122.5}
+        - {x: 72.5, y: -110.5}
+        - {x: 72.5, y: -93.5}
+        - {x: 41.5, y: 89.5}
+        - {x: -41.5, y: 89.5}
+        - {x: -59.5, y: 45.5}
+        - {x: -59.5, y: 5.5}
+        - {x: -58.5, y: 4.5}
+        - {x: -50.5, y: 5.5}
+        - {x: -41.5, y: 13.5}
+        - {x: -42.5, y: 15.5}
+        - {x: -31.5, y: 24.5}
+        - {x: -34.5, y: 21.5}
+        - {x: -39.5, y: 17.5}
+        - {x: -51.5, y: -4.5}
+        - {x: -35.5, y: -94.5}
+        - {x: -15.5, y: -141.5}
+        - {x: 33.5, y: -141.5}
+        - {x: 41.5, y: -136.5}
+        - {x: 39.5, y: -130.5}
+        - {x: 27.5, y: -128.5}
+    - name: red_carry_walk_strip10_1
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -38.200012, y: 93.5}
+        - {x: -53.200012, y: 80.5}
+        - {x: -57.200012, y: 40.5}
+        - {x: -57.200012, y: 0.5}
+        - {x: -46.200012, y: 10.5}
+        - {x: -34.200012, y: 24.5}
+        - {x: -27.200012, y: 29.5}
+        - {x: -34.200012, y: 23.5}
+        - {x: -43.200012, y: 11.5}
+        - {x: -45.200012, y: 0.5}
+        - {x: -41.200012, y: -16.5}
+        - {x: -29.200012, y: -141.5}
+        - {x: -25.200012, y: -142.5}
+        - {x: 86.79999, y: -142.5}
+        - {x: 86.79999, y: -48.5}
+        - {x: 68.79999, y: 93.5}
+    - name: red_carry_walk_strip10_2
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 95.599976, y: -142.5}
+        - {x: 95.599976, y: -87.5}
+        - {x: 35.599976, y: 81.5}
+        - {x: -58.400024, y: 81.5}
+        - {x: -58.400024, y: -142.5}
+        - {x: -0.4000244, y: -142.5}
+        - {x: 3.5999756, y: -137.5}
+        - {x: 3.5999756, y: -134.5}
+        - {x: 29.599976, y: -142.5}
+    - name: red_carry_walk_strip10_3
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 0
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28.600037, y: 71.5}
+        - {x: -59.600037, y: 58.5}
+        - {x: -59.600037, y: -142.5}
+        - {x: -3.6000366, y: -142.5}
+        - {x: -0.6000366, y: -136.5}
+        - {x: -3.6000366, y: -130.5}
+        - {x: 7.3999634, y: -142.5}
+        - {x: 72.39996, y: -142.5}
+        - {x: 72.39996, y: 41.5}
+        - {x: 23.399963, y: 71.5}
+    - name: red_carry_walk_strip10_4
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 0
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -59.30005, y: 94.5}
+        - {x: -59.30005, y: -142.5}
+        - {x: 34.69995, y: -142.5}
+        - {x: 34.69995, y: 91.5}
+        - {x: 25.699951, y: 94.5}
+    - name: red_carry_walk_strip10_5
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 0
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 17.5, y: -123.5}
+        - {x: 12.5, y: -122.5}
+        - {x: 7.5, y: -119.5}
+        - {x: 13.5, y: -119.5}
+        - {x: 16.5, y: -123.5}
+        - {x: 19.5, y: -123.5}
+        - {x: 21.5, y: -125.5}
+        - {x: 47.5, y: -122.5}
+        - {x: 72.5, y: -110.5}
+        - {x: 72.5, y: -93.5}
+        - {x: 41.5, y: 89.5}
+        - {x: -41.5, y: 89.5}
+        - {x: -59.5, y: 45.5}
+        - {x: -59.5, y: 5.5}
+        - {x: -58.5, y: 4.5}
+        - {x: -50.5, y: 5.5}
+        - {x: -41.5, y: 13.5}
+        - {x: -42.5, y: 15.5}
+        - {x: -31.5, y: 24.5}
+        - {x: -34.5, y: 21.5}
+        - {x: -39.5, y: 17.5}
+        - {x: -51.5, y: -4.5}
+        - {x: -35.5, y: -94.5}
+        - {x: -15.5, y: -141.5}
+        - {x: 33.5, y: -141.5}
+        - {x: 41.5, y: -136.5}
+        - {x: 39.5, y: -130.5}
+        - {x: 27.5, y: -128.5}
+    - name: red_carry_walk_strip10_6
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 0
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -38.200073, y: 93.5}
+        - {x: -53.200073, y: 80.5}
+        - {x: -57.200073, y: 40.5}
+        - {x: -57.200073, y: 0.5}
+        - {x: -46.200073, y: 10.5}
+        - {x: -34.200073, y: 24.5}
+        - {x: -27.200073, y: 29.5}
+        - {x: -34.200073, y: 23.5}
+        - {x: -43.200073, y: 11.5}
+        - {x: -45.200073, y: 0.5}
+        - {x: -41.200073, y: -16.5}
+        - {x: -29.200073, y: -141.5}
+        - {x: -25.200073, y: -142.5}
+        - {x: 86.79993, y: -142.5}
+        - {x: 86.79993, y: -48.5}
+        - {x: 68.79993, y: 93.5}
+    - name: red_carry_walk_strip10_7
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 0
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 95.599976, y: -142.5}
+        - {x: 95.599976, y: -87.5}
+        - {x: 35.599976, y: 81.5}
+        - {x: -58.400024, y: 81.5}
+        - {x: -58.400024, y: -142.5}
+        - {x: -0.4000244, y: -142.5}
+        - {x: 3.5999756, y: -137.5}
+        - {x: 3.5999756, y: -134.5}
+        - {x: 29.599976, y: -142.5}
+    - name: red_carry_walk_strip10_8
+      rect:
+        serializedVersion: 2
+        x: 4000
+        y: 0
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28.600098, y: 71.5}
+        - {x: -59.600098, y: 58.5}
+        - {x: -59.600098, y: -142.5}
+        - {x: -3.6000977, y: -142.5}
+        - {x: -0.60009766, y: -136.5}
+        - {x: -3.6000977, y: -130.5}
+        - {x: 7.3999023, y: -142.5}
+        - {x: 72.3999, y: -142.5}
+        - {x: 72.3999, y: 41.5}
+        - {x: 23.399902, y: 71.5}
+    - name: red_carry_walk_strip10_9
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 0
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -59.30005, y: 94.5}
+        - {x: -59.30005, y: -142.5}
+        - {x: 34.69995, y: -142.5}
+        - {x: 34.69995, y: 91.5}
+        - {x: 25.699951, y: 94.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
