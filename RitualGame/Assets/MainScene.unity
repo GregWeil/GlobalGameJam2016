@@ -479,7 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dee26bf5b6c78244bbd32b99b02f65a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &542912653
+--- !u!1001 &555782832
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -516,7 +516,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 416144, guid: f8e21cda38358584eb9d09b7fe9e4cb3, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f8e21cda38358584eb9d09b7fe9e4cb3, type: 2}
@@ -930,7 +930,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 442524, guid: cf17c61522a81451b92790e92fbd1bb3, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 442524, guid: cf17c61522a81451b92790e92fbd1bb3, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1221,7 +1221,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 442524, guid: cf17c61522a81451b92790e92fbd1bb3, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 442524, guid: cf17c61522a81451b92790e92fbd1bb3, type: 2}
       propertyPath: m_LocalPosition.z

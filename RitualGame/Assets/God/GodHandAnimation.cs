@@ -20,6 +20,8 @@ public class GodHandAnimation : MonoBehaviour {
 	SpriteRenderer handRen = null;
 	Material handMat = null, handShadowMat = null;
 
+	public AudioSource moveSound;
+
 	// Use this for initialization
 	void Start () {
 		position = transform.position;
@@ -50,6 +52,8 @@ public class GodHandAnimation : MonoBehaviour {
 			float handAngle = (-Mathf.Atan2 (cloud.position.x - hand.position.x, cloud.position.y - hand.position.y) * Mathf.Rad2Deg);
 			hand.rotation = Quaternion.AngleAxis (handAngle, Vector3.forward);
 		}
+
+		moveSound.volume = Mathf.Clamp01 (velocity.magnitude / 10.0f);
 
         handMat.SetFloat("_CloudHeight", cutoff.position.y);
         handShadowMat.SetFloat("_CloudHeight", cutoff.position.y);
