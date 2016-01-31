@@ -36,6 +36,7 @@ public class GameMaster : MonoBehaviour {
 	public GameObject playerPrefab;
 	public GameObject idolPrefab;
 	public GameObject idolSpawn;
+	public AudioSource scoreSound;
 
 
 	Color[] plColors = { Color.blue, Color.green, Color.red };
@@ -253,6 +254,7 @@ public class GameMaster : MonoBehaviour {
 		idolsRemaining--;
 		StartCoroutine (RespawnIdol());
 		UpdateDisplays ();
+		scoreSound.Play ();
 	}
 
 //====================================================================================
