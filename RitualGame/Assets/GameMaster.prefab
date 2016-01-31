@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 496298}
   - 114: {fileID: 11476334}
-  - 82: {fileID: 8273086}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -293,16 +292,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-<<<<<<< HEAD
 --- !u!82 &8266766
-=======
---- !u!82 &8273086
->>>>>>> origin/master
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-<<<<<<< HEAD
   m_GameObject: {fileID: 197886}
   m_Enabled: 1
   serializedVersion: 4
@@ -382,13 +376,6 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: cae3ecc58e34f4744b3a943c39a4fcee, type: 3}
-=======
-  m_GameObject: {fileID: 116154}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e5e46bb9e52ca234ba677f2a5a5c0489, type: 3}
->>>>>>> origin/master
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -495,7 +482,6 @@ MonoBehaviour:
   playerPrefab: {fileID: 168268, guid: 9f0773f54af396d479498e7880ffb745, type: 2}
   idolPrefab: {fileID: 113770, guid: 6a7ea73b2f4e546ed96be6fe6011cca3, type: 2}
   idolSpawn: {fileID: 132156, guid: 06c34e97594fa4ec28d9cd7346e7fe14, type: 2}
-<<<<<<< HEAD
   roundAudio:
   - {fileID: 8300000, guid: cae3ecc58e34f4744b3a943c39a4fcee, type: 3}
   - {fileID: 8300000, guid: e677b50691d5b4fd7b36d958162b0c80, type: 3}
@@ -504,9 +490,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 79e99b6459d464441a6a407178991c29, type: 3}
   - {fileID: 8300000, guid: d83ace288aef44e8ea9c74f7537b806c, type: 3}
   whistle: {fileID: 8300000, guid: 7e5d347bc99c94ac39ca835d181a3d04, type: 3}
-=======
-  scoreSound: {fileID: 8273086}
->>>>>>> origin/master
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -595,26 +578,6 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 6dafc4fb3976a2f4ca08e9be8b88bcf1,
         type: 3}
-    - target: {fileID: 0}
-      propertyPath: panLevelCustomCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: e5e46bb9e52ca234ba677f2a5a5c0489, type: 3}
-    - target: {fileID: 0}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: scoreSound
-      value: 
-      objectReference: {fileID: 8273086}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 116154}
