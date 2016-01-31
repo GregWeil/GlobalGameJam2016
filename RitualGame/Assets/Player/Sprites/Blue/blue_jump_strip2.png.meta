@@ -1,0 +1,146 @@
+fileFormatVersion: 2
+guid: 5c52eed29cc1e2a46b1dcad085114887
+timeCreated: 1454215217
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: blue_jump_strip2_0
+    21300002: blue_jump_strip2_1
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: blue_jump_strip2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 92, y: 32}
+        - {x: 105, y: 259}
+        - {x: 83, y: 284}
+        - {x: 54, y: 284}
+        - {x: 41, y: 281}
+        - {x: 35, y: 255}
+        - {x: 36, y: 245}
+        - {x: 40, y: 236}
+        - {x: 42, y: 233}
+        - {x: 48, y: 226}
+        - {x: 37, y: 237}
+        - {x: 36, y: 247}
+        - {x: 29, y: 256}
+        - {x: -34, y: 284}
+        - {x: -109, y: 284}
+        - {x: -121, y: 282}
+        - {x: -140, y: 169}
+        - {x: -140, y: 10}
+        - {x: -97, y: -46}
+        - {x: -82, y: -59}
+        - {x: -54, y: -60}
+        - {x: -38, y: -34}
+        - {x: -37, y: -12}
+        - {x: -51, y: 13}
+        - {x: -34, y: 12}
+        - {x: -36, y: -31}
+        - {x: -82, y: -136}
+        - {x: -123, y: -231}
+        - {x: -48, y: -329}
+        - {x: -34, y: -329}
+        - {x: -32, y: -318}
+        - {x: 164, y: -217}
+        - {x: 164, y: -189}
+    - name: blue_jump_strip2_1
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 500
+        height: 700
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 85, y: -110}
+        - {x: 65, y: -44}
+        - {x: 135, y: 55}
+        - {x: 161, y: 40}
+        - {x: 198, y: 53}
+        - {x: 198, y: 102}
+        - {x: 128, y: 132}
+        - {x: 9, y: 330}
+        - {x: -10, y: 330}
+        - {x: -20, y: 319}
+        - {x: -11, y: 231}
+        - {x: -135, y: 151}
+        - {x: -229, y: 87}
+        - {x: -236, y: 33}
+        - {x: -214, y: 15}
+        - {x: -154, y: 34}
+        - {x: -105, y: 101}
+        - {x: -10, y: -22}
+        - {x: -72, y: -70}
+        - {x: -155, y: -51}
+        - {x: -214, y: -104}
+        - {x: -238, y: -163}
+        - {x: -238, y: -169}
+        - {x: -233, y: -174}
+        - {x: -183, y: -146}
+        - {x: 63, y: -245}
+        - {x: 60, y: -289}
+        - {x: 97, y: -330}
+        - {x: 120, y: -330}
+        - {x: 197, y: -232}
+        - {x: 193, y: -210}
+        - {x: 108, y: -251}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
