@@ -12,6 +12,8 @@ public class PlayerAttack : MonoBehaviour {
 	Animator anim = null;
 	int controlNum;
 
+	public AudioSource hurtSound;
+
 	// Use this for initialization
 	void Start () {
 		body = GetComponent<Rigidbody2D> ();
@@ -44,5 +46,6 @@ public class PlayerAttack : MonoBehaviour {
 
 	void Stun () {
 		anim.SetTrigger ("Hurt");
+		hurtSound.Play ();
 	}
 }

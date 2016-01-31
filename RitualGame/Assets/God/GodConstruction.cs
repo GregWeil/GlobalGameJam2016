@@ -6,6 +6,8 @@ public class GodConstruction : MonoBehaviour {
     public Transform selector;
     public GameObject block;
 
+	public AudioSource pickSound, placeSound;
+
     GameObject selectedBlock = null;
     Vector3 selectorPosition = Vector3.zero;
     Vector3 selectorVelocity = Vector3.zero;
@@ -52,6 +54,7 @@ public class GodConstruction : MonoBehaviour {
 						anim.SetExit ();
 						animHasBlock = false;
 						anim.Open ();
+						placeSound.Play ();
 					}
 				}
 			} else if (Input.GetMouseButtonDown (0) && anim.IsRetracted() && !animHasBlock) {
@@ -88,6 +91,7 @@ public class GodConstruction : MonoBehaviour {
 				} else if (anim.IsReady()) {
 					animHasBlock = true;
 					anim.Close ();
+					pickSound.Play ();
 				}
 			}
         }
