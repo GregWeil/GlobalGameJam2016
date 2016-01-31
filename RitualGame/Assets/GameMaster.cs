@@ -25,6 +25,7 @@ public class GameMaster : MonoBehaviour {
 	public bool paused = true;
 	bool gameOver = false;
 	bool roundRunning = false;
+	bool gameStarted = false;
 
 	[Header("Setup")]
 	public Material[] godReticles = new Material[3];
@@ -65,10 +66,17 @@ public class GameMaster : MonoBehaviour {
 	TextMesh leftTotemScore = null;
 	TextMesh rightTotemScore = null;
 	Text godScore = null;
+	AudioSource menuMusic = null;
+	AudioSource roundMusic = null;
 
 //====================================================================================
 
 	void Start(){
+		menuMusic = GameObject.Find("MenuMusic").GetComponent<AudioSource> ();
+		roundMusic = GameObject.Find("RoundMusic").GetComponent<AudioSource> ();
+		menuMusic.Play ();
+		roundMusic.Stop ();
+
 		GameObject[] totems = GameObject.FindGameObjectsWithTag ("Totem");
 		Debug.Assert (totems.Length == 2);
 		foreach (GameObject tt in totems) {
@@ -140,6 +148,7 @@ public class GameMaster : MonoBehaviour {
 //====================================================================================
 
 	public void PauseGame(){
+		if (!roundRunning) { return; }
 		Debug.Log ("Pause");
 		if (paused) {
 			pauseText.enabled = false;
@@ -165,6 +174,11 @@ public class GameMaster : MonoBehaviour {
 //====================================================================================
 
 	public void EndRoundBreak(){
+		if (!gameStarted) {
+			menuMusic.Stop ();
+			roundMusic.Play ();
+			gameStarted = true;
+		}
 		titleText.enabled = false;
 		roundText.enabled = false;
 		startRoundText.enabled = false;
@@ -176,9 +190,11 @@ public class GameMaster : MonoBehaviour {
 
 	public void EndGame(){
 		paused = true;
-		string p0 = "Player 0: " + playerScores[0] + "\n";
-		string p1 = "Player 1: " + playerScores[1] + "\n";
-		string p2 = "Player 2: " + playerScores[2] + "\n";
+		roundMusic.Stop ();
+		menuMusic.Play ();
+		string p0 = "Player 1: " + playerScores[0] + "\n";
+		string p1 = "Player 2: " + playerScores[1] + "\n";
+		string p2 = "Player 3: " + playerScores[2] + "\n";
 		endText.text = "Final Score:\n" + p0 + p1 + p2;
 		endText.enabled = true;
 		gameOver = true;
@@ -189,10 +205,10 @@ public class GameMaster : MonoBehaviour {
 	void InitializeNextRound(){
 		roundNumber++;
 		idolsRemaining = idolsPerRound;
-		Debug.Log ("Round num: " + roundNumber);
-		Debug.Log ("Left: Player " + rounds [roundNumber, 0]);
-		Debug.Log("God: Player " + rounds[roundNumber,1]);
-		Debug.Log("Right: Player " + rounds[roundNumber,2]);
+//		Debug.Log ("Round num: " + roundNumber);
+//		Debug.Log ("Left: Player " + rounds [roundNumber, 0]);
+//		Debug.Log("God: Player " + rounds[roundNumber,1]);
+//		Debug.Log("Right: Player " + rounds[roundNumber,2]);
 		playerRoles = new Vector3 (rounds[roundNumber,0], rounds[roundNumber,1], rounds[roundNumber,2]);
 		//reset positions onscreen
 		leftPlayer.transform.position = leftSpawn.transform.position;
@@ -213,7 +229,7 @@ public class GameMaster : MonoBehaviour {
 		rightPlayer.GetComponentInChildren<Animator>().runtimeAnimatorController = playerAnimations[rounds[roundNumber,2]];
 		rightTotem.sprite = totemSprites[rounds[roundNumber,2]];
 		rightTotemScore.color = plColors[rounds[roundNumber,2]];
-
+		UpdateDisplays ();
 		RoundBreak ();
 		Debug.Log ("Left: Player " + playerRoles.x + ", God: Player " + playerRoles.y + ", Right: Player " + playerRoles.z);
 	}
@@ -242,6 +258,7 @@ public class GameMaster : MonoBehaviour {
 
 	public static void BreakIdol(Idol idol){
 		Destroy (idol.gameObject);
+		gm.playerScores [gm.rounds [gm.roundNumber, 1]] -= gm.pointsPerIdol;
 		gm.idolsRemaining--;
 		gm.StartCoroutine (gm.RespawnIdol());
 		gm.UpdateDisplays ();
