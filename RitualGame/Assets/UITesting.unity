@@ -270,7 +270,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 254056998}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -597,7 +597,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 6
 --- !u!1 &718187030
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,6 +695,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11476334, guid: cad8f97b3cd854fc681909597de39b9d, type: 2}
+      propertyPath: reticles
+      value: 
+      objectReference: {fileID: 2100000, guid: 3aff3ea31439e4bc68536cf7b5e352da, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cad8f97b3cd854fc681909597de39b9d, type: 2}
   m_IsPrefabParent: 0
@@ -905,7 +909,7 @@ Transform:
   - {fileID: 1435051254}
   - {fileID: 1971632619}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 5
 --- !u!1 &901969037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,7 +1048,7 @@ Transform:
   - {fileID: 1352873685}
   - {fileID: 3738124}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!1001 &960472312
 Prefab:
   m_ObjectHideFlags: 0
