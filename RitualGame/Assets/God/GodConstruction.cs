@@ -21,7 +21,8 @@ public class GodConstruction : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		if (GameMaster.gm.paused) { return; }
+		var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         var plane = new Plane(Vector3.forward, new Vector3(0f, 0f, -0.5f));
         float distance;
         if (plane.Raycast(ray, out distance)) {

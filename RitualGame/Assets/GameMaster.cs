@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GameMaster : MonoBehaviour {
@@ -21,12 +22,14 @@ public class GameMaster : MonoBehaviour {
 	public int spawnDelay = 1;
 	public int pointsPerIdol = 2;
 	public int idolsPerRound = 10;
+	public bool paused = true;
+	bool gameOver = false;
 
 	[Header("Setup")]
-	public Material reticles;
+	public Material[] godReticles = new Material[3];
 	public Sprite[] godOpenSprites = new Sprite[3];
 	public Sprite[] godClosedSprites = new Sprite[3];
-	public Sprite[] playerSprites = new Sprite[3];
+	public RuntimeAnimatorController[] playerAnimations = new RuntimeAnimatorController[3];
 	public Sprite[] totemSprites = new Sprite[3];
 	public GameObject playerPrefab;
 	public GameObject idolPrefab;
@@ -35,10 +38,12 @@ public class GameMaster : MonoBehaviour {
 	int[,] rounds = {
 		//player #s, not control #s
 		//{ left-tribesman, god, right-tribesman }
+		{0}, //dummy array to align indices with round number
 		{ 0, 1, 2 }, { 2, 0, 1 }, { 1, 2, 0 },
 		{ 0, 1, 2 }, { 1, 2, 0 }, { 2, 0, 1 }
 	};
 
+	//Gameplay objects
 	SpriteRenderer leftTotem = null;
 	SpriteRenderer rightTotem = null;
 	PlayerSpawnPoint leftSpawn = null;
@@ -47,10 +52,17 @@ public class GameMaster : MonoBehaviour {
 	PlayerMovement rightPlayer = null;
 	GodHandAnimation godPlayer = null;
 
-	//TODO: Main/start menu
-	//TODO: Endgame screen
-	//TODO: Pause between rounds
+	// UI objects
+	Text pauseText = null;
+	Text titleText = null;
+	Text roundText = null;
+	Text startRoundText = null;
+	Button startRoundButton = null;
+	Text endText = null;
+
 	//TODO: UI on totems/pedestal (once sprites are in)
+
+//====================================================================================
 
 	void Start(){
 		GameObject[] totems = GameObject.FindGameObjectsWithTag ("Totem");
@@ -81,16 +93,82 @@ public class GameMaster : MonoBehaviour {
 				rightPlayer = pl;
 			}
 		}
-		InitializeRound ();
+
+		pauseText = GameObject.Find ("PauseText").GetComponent<Text> ();
+		pauseText.enabled = false;
+		titleText = GameObject.Find ("TitleText").GetComponent<Text> ();
+		roundText = GameObject.Find ("RoundText").GetComponent<Text> ();
+		GameObject startRound = GameObject.Find ("StartRoundButton");
+		startRoundText = startRound.GetComponent<Text>();
+		startRoundButton = startRound.GetComponent<Button>();
+		startRoundButton.onClick.AddListener(EndRoundBreak);
+		endText = GameObject.Find ("EndText").GetComponent<Text> ();
+		endText.enabled = false;
 	}
+
+//====================================================================================
 
 	void Update(){
 		if(idolsRemaining <= 0){
-			InitializeRound ();
+			if (roundNumber >= 6) { 
+				EndGame ();
+			} else{
+				InitializeNextRound ();
+			}
+		}
+		if (!gameOver && Input.GetButtonDown ("Pause")) { PauseGame (); }
+	}
+
+//====================================================================================
+
+	public void PauseGame(){
+		Debug.Log ("Pause");
+		if (paused) {
+			pauseText.enabled = false;
+			paused = false;
+			Time.timeScale = 1f;
+		} else {
+			paused = true;
+			Time.timeScale = 0f;
+			pauseText.enabled = true;
 		}
 	}
 
-	void InitializeRound(){
+//====================================================================================
+
+	public void RoundBreak(){
+		paused = true;
+		roundText.text = "Round " + roundNumber;
+		roundText.enabled = true;
+		startRoundText.enabled = true;
+		startRoundButton.enabled = true;
+	}
+
+//====================================================================================
+
+	public void EndRoundBreak(){
+		titleText.enabled = false;
+		roundText.enabled = false;
+		startRoundText.enabled = false;
+		startRoundButton.enabled = false;
+		paused = false;
+	}
+
+//====================================================================================
+
+	public void EndGame(){
+		paused = true;
+		string p0 = "Player 0: " + playerScores[0] + "\n";
+		string p1 = "Player 1: " + playerScores[1] + "\n";
+		string p2 = "Player 2: " + playerScores[2] + "\n";
+		endText.text = "Final Score:\n" + p0 + p1 + p2;
+		endText.enabled = true;
+		gameOver = true;
+	}
+
+//====================================================================================
+
+	void InitializeNextRound(){
 		roundNumber++;
 		idolsRemaining = idolsPerRound;
 		playerRoles = new Vector3 (rounds[roundNumber,0], rounds[roundNumber,1], rounds[roundNumber,2]);
@@ -103,20 +181,26 @@ public class GameMaster : MonoBehaviour {
 		godPlayer.playerNum = rounds[roundNumber,1];
 		rightSpawn.playerNumber = rightPlayer.playerNum = rounds[roundNumber,2];
 		//set sprites
-		//TODO: color swap the animations and reticle
-		leftPlayer.GetComponentInChildren<SpriteRenderer>().sprite = playerSprites[rounds[roundNumber,0]];
+		leftPlayer.GetComponentInChildren<Animator>().runtimeAnimatorController = playerAnimations[rounds[roundNumber,0]];
 		leftTotem.sprite = totemSprites[rounds[roundNumber,0]];
 		godPlayer.handOpen = godOpenSprites[rounds[roundNumber,1]];
 		godPlayer.handClosed = godClosedSprites[rounds[roundNumber,1]];
-		rightPlayer.GetComponentInChildren<SpriteRenderer>().sprite = playerSprites[rounds[roundNumber,2]];
+		godPlayer.GetComponentInChildren<MeshRenderer>().material = godReticles[rounds[roundNumber,1]];
+		rightPlayer.GetComponentInChildren<Animator>().runtimeAnimatorController = playerAnimations[rounds[roundNumber,2]];
 		rightTotem.sprite = totemSprites[rounds[roundNumber,2]];
 
+		RoundBreak ();
+		Debug.Log ("Left: Player " + playerRoles.x + ", God: Player " + playerRoles.y + ", Right: Player " + playerRoles.z);
 	}
+
+//====================================================================================
 
 	public IEnumerator RespawnIdol () {
 		yield return new WaitForSeconds (spawnDelay);
 		Instantiate (idolPrefab, idolSpawn.transform.position, idolSpawn.transform.rotation);
 	}
+
+//====================================================================================
 
 	public void ScorePoints(int playerNum, Idol idol){
 		int idolBonusPoints = idol.getDamage ();
@@ -127,10 +211,14 @@ public class GameMaster : MonoBehaviour {
 		StartCoroutine (RespawnIdol());
 	}
 
+//====================================================================================
+
 	public static void BreakIdol(Idol idol){
 		Destroy (idol.gameObject);
 		gm.idolsRemaining--;
 		gm.StartCoroutine (gm.RespawnIdol());
 	}
+
+//====================================================================================
 
 }

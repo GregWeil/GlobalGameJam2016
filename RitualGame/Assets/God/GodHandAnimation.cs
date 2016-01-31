@@ -33,6 +33,7 @@ public class GodHandAnimation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (GameMaster.gm.paused) { return; }
 		position = Vector2.SmoothDamp (position, destination, ref velocity, 0.1f);
 		cloudPosition = Mathf.SmoothDamp (cloudPosition, destination.x, ref cloudVelocity, 0.3f);
 		cloudPosition = position.x;
