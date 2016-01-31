@@ -24,6 +24,7 @@ public class GameMaster : MonoBehaviour {
 	public int idolsPerRound = 10;
 	public bool paused = true;
 	bool gameOver = false;
+	bool roundRunning = false;
 
 	[Header("Setup")]
 	public Material[] godReticles = new Material[3];
@@ -57,7 +58,6 @@ public class GameMaster : MonoBehaviour {
 	Text titleText = null;
 	Text roundText = null;
 	Text startRoundText = null;
-	Button startRoundButton = null;
 	Text endText = null;
 
 	//TODO: UI on totems/pedestal (once sprites are in)
@@ -98,10 +98,7 @@ public class GameMaster : MonoBehaviour {
 		pauseText.enabled = false;
 		titleText = GameObject.Find ("TitleText").GetComponent<Text> ();
 		roundText = GameObject.Find ("RoundText").GetComponent<Text> ();
-		GameObject startRound = GameObject.Find ("StartRoundButton");
-		startRoundText = startRound.GetComponent<Text>();
-		startRoundButton = startRound.GetComponent<Button>();
-		startRoundButton.onClick.AddListener(EndRoundBreak);
+		startRoundText = GameObject.Find ("StartRoundButton").GetComponent<Text>();
 		endText = GameObject.Find ("EndText").GetComponent<Text> ();
 		endText.enabled = false;
 	}
@@ -117,6 +114,7 @@ public class GameMaster : MonoBehaviour {
 			}
 		}
 		if (!gameOver && Input.GetButtonDown ("Pause")) { PauseGame (); }
+		if (!roundRunning && Input.GetButtonDown ("Start")) { EndRoundBreak (); }
 	}
 
 //====================================================================================
@@ -141,7 +139,6 @@ public class GameMaster : MonoBehaviour {
 		roundText.text = "Round " + roundNumber;
 		roundText.enabled = true;
 		startRoundText.enabled = true;
-		startRoundButton.enabled = true;
 	}
 
 //====================================================================================
@@ -150,7 +147,6 @@ public class GameMaster : MonoBehaviour {
 		titleText.enabled = false;
 		roundText.enabled = false;
 		startRoundText.enabled = false;
-		startRoundButton.enabled = false;
 		paused = false;
 	}
 

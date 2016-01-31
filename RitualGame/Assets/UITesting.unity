@@ -1422,6 +1422,22 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1212398219}
+    - target: {fileID: 11407258, guid: 80ccd5d7dd9e343fab2474cae00703df, type: 2}
+      propertyPath: m_Text
+      value: Press Space to start
+      objectReference: {fileID: 0}
+    - target: {fileID: 22413896, guid: 80ccd5d7dd9e343fab2474cae00703df, type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 22413896, guid: 80ccd5d7dd9e343fab2474cae00703df, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 11407258, guid: 80ccd5d7dd9e343fab2474cae00703df, type: 2}
+      propertyPath: m_FontData.m_MaxSize
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 80ccd5d7dd9e343fab2474cae00703df, type: 2}
   m_IsPrefabParent: 0
