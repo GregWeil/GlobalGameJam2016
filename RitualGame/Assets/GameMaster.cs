@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GameMaster : MonoBehaviour {
@@ -72,6 +73,7 @@ public class GameMaster : MonoBehaviour {
 	AudioSource roundMusic = null;
 	AudioSource roundBreakAudio = null;
 	AudioSource endWhistle = null;
+	AudioSource scoreAudio = null;
 
 //====================================================================================
 
@@ -80,10 +82,12 @@ public class GameMaster : MonoBehaviour {
 		roundMusic = GameObject.Find("RoundMusic").GetComponent<AudioSource> ();
 		roundBreakAudio = GameObject.Find("RoundStart").GetComponent<AudioSource> ();
 		endWhistle = GameObject.Find ("Whistle").GetComponent<AudioSource> ();
+		scoreAudio = GameObject.Find ("ScoreAudio").GetComponent<AudioSource> ();
 		menuMusic.Play ();
 		roundMusic.Stop ();
 		roundBreakAudio.Stop ();
 		endWhistle.Stop ();
+		scoreAudio.Stop ();
 
 		GameObject[] totems = GameObject.FindGameObjectsWithTag ("Totem");
 		Debug.Assert (totems.Length == 2);
@@ -142,6 +146,8 @@ public class GameMaster : MonoBehaviour {
 		}
 		if (!gameOver && Input.GetButtonDown ("Pause")) { PauseGame (); }
 		if (!roundRunning && Input.GetButtonDown ("Start")) { EndRoundBreak (); }
+		if (paused && Input.GetButtonDown ("Restart")) { RestartGame (); }
+		if (paused && Input.GetButtonDown ("Quit")) { QuitGame (); }
 	}
 
 //====================================================================================
@@ -152,6 +158,22 @@ public class GameMaster : MonoBehaviour {
 		godScore.text = "" + playerScores[rounds[roundNumber,1]];
 		rightTotemScore.text = "" + playerScores[rounds[roundNumber,2]];
 		idolCount.text = "" + idolsRemaining;
+	}
+
+//====================================================================================
+
+	public void QuitGame(){
+		if (paused) {
+			Application.Quit ();
+		}
+	}
+
+//====================================================================================
+
+	public void RestartGame(){
+		if (paused) {
+			SceneManager.LoadScene (SceneManager.GetActiveScene().name);
+		}
 	}
 
 //====================================================================================
@@ -265,6 +287,7 @@ public class GameMaster : MonoBehaviour {
 		idolsRemaining--;
 		StartCoroutine (RespawnIdol());
 		UpdateDisplays ();
+		scoreAudio.Play ();
 	}
 
 //====================================================================================
