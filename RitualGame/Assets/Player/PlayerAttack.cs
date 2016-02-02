@@ -39,6 +39,7 @@ public class PlayerAttack : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (GameMaster.gm.paused) { return; }
 		if (Input.GetButtonDown ("Attack" + controlNum.ToString ()) && !move.HasIdol()) {
 			StartCoroutine (Attack ());
 		}

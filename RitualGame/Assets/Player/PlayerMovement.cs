@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour {
 		//Turning
 		if (grounded && (Mathf.Abs(Input.GetAxis("Horizontal"+controlNum.ToString())) > 0.2f)) {
 			GetComponentInChildren<SpriteRenderer> ().flipX = (Input.GetAxis("Horizontal"+controlNum.ToString()) < 0.0f);
-			//if (!moveSound.isPlaying) moveSound.Play ();
+			if (!moveSound.isPlaying) moveSound.Play ();
 		}
 
 		//Jumping
@@ -106,8 +106,10 @@ public class PlayerMovement : MonoBehaviour {
 	public void PickUpIdol(Idol id) {
 		idol = id;
 		hasIdol = idol.PickUp (this);
-		moveSound.clip = runClip;
-		pickSound.Play ();
+		if(hasIdol) { 
+			moveSound.clip = walkClip;
+			pickSound.Play (); 
+		}
 	}
 
 	public void DropIdol() {
@@ -115,7 +117,7 @@ public class PlayerMovement : MonoBehaviour {
 		idol.Drop();
 		hasIdol = false;
 		idol = null;
-		moveSound.clip = walkClip;
+		moveSound.clip = runClip;
 	}
 
 	public bool HasIdol() {

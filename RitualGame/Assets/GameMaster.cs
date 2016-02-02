@@ -22,7 +22,9 @@ public class GameMaster : MonoBehaviour {
 	[Header("Gameplay")]
 	public int spawnDelay = 1;
 	public int pointsPerIdol = 2;
-	public int idolsPerRound = 10;
+	public int idolsPerRound = 3;
+	[Range(0,1)]
+	public float percentTotemOffscreen = 0.16f;
 	public bool paused = true;
 	bool gameOver = false;
 	bool roundRunning = false;
@@ -49,6 +51,9 @@ public class GameMaster : MonoBehaviour {
 		{ 0, 1, 2 }, { 2, 0, 1 }, { 1, 2, 0 },
 		{ 0, 1, 2 }, { 1, 2, 0 }, { 2, 0, 1 }
 	};
+
+	Camera cam;
+	float camHorizView = 0f;
 
 	//Gameplay objects
 	SpriteRenderer leftTotem = null;
@@ -78,6 +83,7 @@ public class GameMaster : MonoBehaviour {
 //====================================================================================
 
 	void Start(){
+		//audio
 		menuMusic = GameObject.Find("MenuMusic").GetComponent<AudioSource> ();
 		roundMusic = GameObject.Find("RoundMusic").GetComponent<AudioSource> ();
 		roundBreakAudio = GameObject.Find("RoundStart").GetComponent<AudioSource> ();
@@ -89,6 +95,7 @@ public class GameMaster : MonoBehaviour {
 		endWhistle.Stop ();
 		scoreAudio.Stop ();
 
+		//gameplay objects
 		GameObject[] totems = GameObject.FindGameObjectsWithTag ("Totem");
 		Debug.Assert (totems.Length == 2);
 		foreach (GameObject tt in totems) {
@@ -120,6 +127,7 @@ public class GameMaster : MonoBehaviour {
 			}
 		}
 
+		//text
 		godScore = GameObject.Find ("GodScore").GetComponent<Text> ();
 		idolCount = GameObject.Find ("Pedestal").GetComponentInChildren<TextMesh> ();
 		pauseText = GameObject.Find ("PauseText").GetComponent<Text> ();
@@ -129,6 +137,15 @@ public class GameMaster : MonoBehaviour {
 		startRoundText = GameObject.Find ("StartRoundButton").GetComponent<Text>();
 		endText = GameObject.Find ("EndText").GetComponent<Text> ();
 		endText.enabled = false;
+
+		//screen positioning
+		cam = Camera.main;
+		camHorizView = Mathf.Abs(cam.transform.position.z) * Mathf.Tan (0.5f * Mathf.Deg2Rad * cam.fieldOfView) * Screen.width / Screen.height; //the camera's horizontal view extent
+		Debug.Log ("Cam view = " + camHorizView);
+		float totemOffsetFromEdge = leftTotem.sprite.bounds.size.x * percentTotemOffscreen;
+//		Debug.Log ("Totem sprite width = " + leftTotem.sprite.bounds.size.x + ", offset from edge = " + totemOffsetFromEdge);
+		leftTotem.transform.parent.position = new Vector3(totemOffsetFromEdge - camHorizView, leftTotem.transform.parent.position.y, leftTotem.transform.parent.position.z);
+		rightTotem.transform.parent.position = new Vector3(camHorizView - totemOffsetFromEdge, rightTotem.transform.parent.position.y, rightTotem.transform.parent.position.z);
 
 		InitializeNextRound ();
 	}
@@ -153,7 +170,7 @@ public class GameMaster : MonoBehaviour {
 //====================================================================================
 
 	void UpdateDisplays(){
-		Debug.Log ("Round num: " + roundNumber + ", num scores: " + playerScores.Length);
+//		Debug.Log ("Round num: " + roundNumber + ", num scores: " + playerScores.Length);
 		leftTotemScore.text = "" + playerScores[rounds[roundNumber,0]];
 		godScore.text = "" + playerScores[rounds[roundNumber,1]];
 		rightTotemScore.text = "" + playerScores[rounds[roundNumber,2]];
