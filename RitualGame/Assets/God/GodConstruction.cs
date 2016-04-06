@@ -50,6 +50,10 @@ public class GodConstruction : MonoBehaviour {
 						//Release the block
 						selectedBlock.transform.position = animReleasePos;
 						selectedBlock.GetComponent<Collider2D> ().enabled = true;
+                        selectedBlock.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+                        if (selectedBlock.transform.position.y > 13.5) {
+                            Destroy(selectedBlock);
+                        }
 						selectedBlock = null;
 						anim.SetExit ();
 						animHasBlock = false;
@@ -93,6 +97,11 @@ public class GodConstruction : MonoBehaviour {
 					anim.Close ();
 					pickSound.Play ();
 				}
+                if (selectedBlock.transform.position.y < 13.5) {
+                    selectedBlock.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+                } else {
+                    selectedBlock.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                }
 			}
         }
 	}
