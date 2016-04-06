@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerMovement : MonoBehaviour {
 	[Range(0,2)]
@@ -43,7 +44,7 @@ public class PlayerMovement : MonoBehaviour {
 	void FixedUpdate () {
 		if (GameMaster.gm.paused) { return; }
 		body.AddForce (gravity - Physics2D.gravity);
-		float goalSpeed = (Input.GetAxis("Horizontal"+controlNum.ToString()) * moveSpeed / stun);
+		float goalSpeed = (CrossPlatformInputManager.GetAxis("Horizontal"+controlNum.ToString()) * moveSpeed / stun);
 		if (hasIdol) goalSpeed *= idolSlow;
 		float force = ((goalSpeed - body.velocity.x) * moveAccel);
 		if (!grounded) force /= stun;
@@ -51,7 +52,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		if (jump) {
 			body.AddForce(new Vector2(0, jumpForce / stun), ForceMode2D.Impulse);
-        } else if (Input.GetButton("Jump" + controlNum.ToString()) && !grounded) {
+		} else if (CrossPlatformInputManager.GetButton("Jump" + controlNum.ToString()) && !grounded) {
             body.AddForce(new Vector2(0, jumpCarry));
         }
         jump = false;
@@ -72,13 +73,13 @@ public class PlayerMovement : MonoBehaviour {
 		if (GameMaster.gm.paused) { return; }
 
 		//Turning
-		if (grounded && (Mathf.Abs(Input.GetAxis("Horizontal"+controlNum.ToString())) > 0.2f)) {
-			GetComponentInChildren<SpriteRenderer> ().flipX = (Input.GetAxis("Horizontal"+controlNum.ToString()) < 0.0f);
+		if (grounded && (Mathf.Abs(CrossPlatformInputManager.GetAxis("Horizontal"+controlNum.ToString())) > 0.2f)) {
+			GetComponentInChildren<SpriteRenderer> ().flipX = (CrossPlatformInputManager.GetAxis("Horizontal"+controlNum.ToString()) < 0.0f);
 			if (!moveSound.isPlaying) moveSound.Play ();
 		}
 
 		//Jumping
-		if (Input.GetButtonDown ("Jump" + controlNum.ToString ()) && grounded) {
+		if (CrossPlatformInputManager.GetButtonDown ("Jump" + controlNum.ToString ()) && grounded) {
 			jump = true;
 			jumpSound.Play ();
 		}

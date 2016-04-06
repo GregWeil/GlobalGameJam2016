@@ -16,6 +16,8 @@ public class GodConstruction : MonoBehaviour {
 	bool animHasBlock = false;
 	Vector3 animReleasePos = Vector3.zero;
 
+	//TODO: block queue to restrict number of blocks that can be placed
+
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<GodHandAnimation> ();

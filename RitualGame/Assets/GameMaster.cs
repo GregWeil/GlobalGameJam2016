@@ -232,6 +232,8 @@ public class GameMaster : MonoBehaviour {
 		startRoundText.enabled = false;
 		roundRunning = true;
 		paused = false;
+		PauseGame ();
+		PauseGame ();
 	}
 
 //====================================================================================

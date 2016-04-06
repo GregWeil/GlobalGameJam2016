@@ -943,6 +943,18 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11424824, guid: 80ccd5d7dd9e343fab2474cae00703df, type: 2}
+      propertyPath: m_Text
+      value: Divine and Conquer
+      objectReference: {fileID: 0}
+    - target: {fileID: 22480764, guid: 80ccd5d7dd9e343fab2474cae00703df, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000030517578
+      objectReference: {fileID: 0}
+    - target: {fileID: 22480764, guid: 80ccd5d7dd9e343fab2474cae00703df, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -39.9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 80ccd5d7dd9e343fab2474cae00703df, type: 2}
   m_IsPrefabParent: 0
