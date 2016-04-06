@@ -142,12 +142,14 @@ public class GameMaster : MonoBehaviour {
 		cam = Camera.main;
 		camHorizView = Mathf.Abs(cam.transform.position.z) * Mathf.Tan (0.5f * Mathf.Deg2Rad * cam.fieldOfView) * Screen.width / Screen.height; //the camera's horizontal view extent
 		Debug.Log ("Cam view = " + camHorizView);
+        /*
 		float totemOffsetFromEdge = leftTotem.sprite.bounds.size.x * percentTotemOffscreen;
 //		Debug.Log ("Totem sprite width = " + leftTotem.sprite.bounds.size.x + ", offset from edge = " + totemOffsetFromEdge);
 		leftTotem.transform.parent.position = new Vector3(totemOffsetFromEdge - camHorizView, leftTotem.transform.parent.position.y, leftTotem.transform.parent.position.z);
 		rightTotem.transform.parent.position = new Vector3(camHorizView - totemOffsetFromEdge, rightTotem.transform.parent.position.y, rightTotem.transform.parent.position.z);
+        */
 
-		InitializeNextRound ();
+        InitializeNextRound();
 	}
 
 //====================================================================================
