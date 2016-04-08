@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GodConstruction : MonoBehaviour {
 
@@ -7,6 +8,8 @@ public class GodConstruction : MonoBehaviour {
     public GameObject block;
 
 	public AudioSource pickSound, placeSound;
+	[Range (0f, 1f)]
+	public float amtScreenCoverage = 0.2f;
 
     GameObject selectedBlock = null;
     Vector3 selectorPosition = Vector3.zero;
@@ -16,11 +19,20 @@ public class GodConstruction : MonoBehaviour {
 	bool animHasBlock = false;
 	Vector3 animReleasePos = Vector3.zero;
 
-	//TODO: block queue to restrict number of blocks that can be placed
+	int maxBlocks;
+	List<GameObject> placedBlocks;
 
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<GodHandAnimation> ();
+		placedBlocks = new List<GameObject>();
+		Vector2 gBounds = GameMaster.gm.getGameDimensions ();
+		Debug.Log (gBounds);
+		float blockSizeX = block.transform.localScale.x;
+		float blockSizeY = block.transform.localScale.y;
+		float numSquares = (gBounds.x / blockSizeX) * (gBounds.y / blockSizeY);
+		maxBlocks = Mathf.RoundToInt (numSquares * amtScreenCoverage);
+		Debug.Log (maxBlocks);
 	}
 
 	// Update is called once per frame
@@ -52,6 +64,15 @@ public class GodConstruction : MonoBehaviour {
 						//Release the block
 						selectedBlock.transform.position = animReleasePos;
 						selectedBlock.GetComponent<Collider2D> ().enabled = true;
+
+						if (!placedBlocks.Contains (selectedBlock)) {
+							placedBlocks.Add (selectedBlock);
+//							if ((placedBlocks.Count % 15) == 0) {
+//								Debug.Log (placedBlocks.Count);
+//							}
+						}
+//						Debug.Log (selectedBlock.transform.position);
+
 						selectedBlock = null;
 						anim.SetExit ();
 						animHasBlock = false;
@@ -65,7 +86,6 @@ public class GodConstruction : MonoBehaviour {
 					selectedBlock = (GameObject)Instantiate (block, pos, Quaternion.identity);
 					selectedBlock.GetComponent<Collider2D> ().enabled = false;
 					selectedBlock.name = block.name;
-
 					anim.SetGoal (pos);
 					animHasBlock = true;
 					anim.Close ();
@@ -81,6 +101,14 @@ public class GodConstruction : MonoBehaviour {
 			} else if (anim.IsRetracted() && !animHasBlock) {
 				anim.SetGoalX (pos.x);
             }
+
+			// if more blocks have been placed than the max, remove the oldest block
+			if (placedBlocks.Count > maxBlocks) {
+				GameObject oldest = placedBlocks [0];
+				placedBlocks.RemoveAt (0);
+				Destroy (oldest);
+//				Debug.Log ("destroyed block");
+			}
 
             //Smoothly move the selector
             selector.position = Vector3.SmoothDamp(selector.position, pos, ref selectorVelocity, 0.05f);

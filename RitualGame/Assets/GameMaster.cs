@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class GameMaster : MonoBehaviour {
 	public static GameMaster gm;
@@ -17,12 +18,13 @@ public class GameMaster : MonoBehaviour {
 	[SerializeField]
 	int roundNumber = 0;
 	[SerializeField]
-	Vector3 playerRoles = new Vector3(0,1,2);
+//	Vector3 playerRoles = new Vector3(0,1,2);
 
 	[Header("Gameplay")]
 	public int spawnDelay = 1;
 	public int pointsPerIdol = 2;
 	public int idolsPerRound = 3;
+	public int numRounds = 3;
 	[Range(0,1)]
 	public float percentTotemOffscreen = 0.16f;
 	public bool paused = true;
@@ -54,6 +56,8 @@ public class GameMaster : MonoBehaviour {
 
 	Camera cam;
 	float camHorizView = 0f;
+	float gameplayHeight;
+	float gameplayWidth;
 
 	//Gameplay objects
 	SpriteRenderer leftTotem = null;
@@ -141,13 +145,37 @@ public class GameMaster : MonoBehaviour {
 		//screen positioning
 		cam = Camera.main;
 		camHorizView = Mathf.Abs(cam.transform.position.z) * Mathf.Tan (0.5f * Mathf.Deg2Rad * cam.fieldOfView) * Screen.width / Screen.height; //the camera's horizontal view extent
-		Debug.Log ("Cam view = " + camHorizView);
+//		Debug.Log ("Cam view = " + camHorizView);
 		float totemOffsetFromEdge = leftTotem.sprite.bounds.size.x * percentTotemOffscreen;
 //		Debug.Log ("Totem sprite width = " + leftTotem.sprite.bounds.size.x + ", offset from edge = " + totemOffsetFromEdge);
 		leftTotem.transform.parent.position = new Vector3(totemOffsetFromEdge - camHorizView, leftTotem.transform.parent.position.y, leftTotem.transform.parent.position.z);
 		rightTotem.transform.parent.position = new Vector3(camHorizView - totemOffsetFromEdge, rightTotem.transform.parent.position.y, rightTotem.transform.parent.position.z);
 
+		//calculate gameplay boundaries
+		Transform cutoff = GameObject.Find ("Cutoff").transform;
+		BoxCollider2D ceiling = GameObject.Find ("Ceiling").GetComponent<BoxCollider2D> ();
+		BoxCollider2D floor = GameObject.Find ("Floor").GetComponent<BoxCollider2D> ();
+		BoxCollider2D leftWall = leftTotem.transform.parent.FindChild ("Left").GetComponent<BoxCollider2D> ();
+		BoxCollider2D rightWall = rightTotem.transform.parent.FindChild ("Right").GetComponent<BoxCollider2D> ();
+		float leftEdge = leftWall.bounds.center.x + leftWall.bounds.extents.x;
+		float rightEdge = rightWall.bounds.center.x - rightWall.bounds.extents.x;
+		float bottomEdge = floor.bounds.center.y + floor.bounds.extents.y;
+		float topEdge = cutoff.position.y;//ceiling.bounds.center.y - ceiling.bounds.extents.y;
+		gameplayHeight = topEdge - bottomEdge;
+		gameplayWidth = rightEdge - leftEdge;
+		ceiling.transform.localScale = new Vector3 (gameplayWidth, ceiling.transform.localScale.y, ceiling.transform.localScale.z);
+		ceiling.transform.position = new Vector3 (ceiling.transform.position.x, topEdge + ceiling.bounds.extents.y, ceiling.transform.position.z);
+		floor.transform.localScale = new Vector3 (gameplayWidth, floor.transform.localScale.y, floor.transform.localScale.z);
+//		Vector4 temp = new Vector4 (leftEdge, rightEdge, bottomEdge, topEdge);
+//		Debug.Log (temp.ToString());
+
 		InitializeNextRound ();
+	}
+
+//====================================================================================
+
+	public Vector2 getGameDimensions(){
+		return new Vector2 (gameplayWidth, gameplayHeight);
 	}
 
 //====================================================================================
@@ -161,10 +189,10 @@ public class GameMaster : MonoBehaviour {
 				InitializeNextRound ();
 			}
 		}
-		if (!gameOver && Input.GetButtonDown ("Pause")) { PauseGame (); }
-		if (!roundRunning && Input.GetButtonDown ("Start")) { EndRoundBreak (); }
-		if (paused && Input.GetButtonDown ("Restart")) { RestartGame (); }
-		if (paused && Input.GetButtonDown ("Quit")) { QuitGame (); }
+		if (!gameOver && CrossPlatformInputManager.GetButtonDown ("Pause")) { PauseGame (); }
+		if (!roundRunning && CrossPlatformInputManager.GetButtonDown ("Start")) { EndRoundBreak (); }
+		if (paused && CrossPlatformInputManager.GetButtonDown ("Restart")) { RestartGame (); }
+		if (paused && CrossPlatformInputManager.GetButtonDown ("Quit")) { QuitGame (); }
 	}
 
 //====================================================================================
@@ -197,7 +225,7 @@ public class GameMaster : MonoBehaviour {
 
 	public void PauseGame(){
 		if (!roundRunning) { return; }
-		Debug.Log ("Pause");
+//		Debug.Log ("Pause");
 		if (paused) {
 			pauseText.enabled = false;
 			paused = false;
@@ -260,7 +288,7 @@ public class GameMaster : MonoBehaviour {
 //		Debug.Log ("Left: Player " + rounds [roundNumber, 0]);
 //		Debug.Log("God: Player " + rounds[roundNumber,1]);
 //		Debug.Log("Right: Player " + rounds[roundNumber,2]);
-		playerRoles = new Vector3 (rounds[roundNumber,0], rounds[roundNumber,1], rounds[roundNumber,2]);
+//		playerRoles = new Vector3 (rounds[roundNumber,0], rounds[roundNumber,1], rounds[roundNumber,2]);
 		//reset positions onscreen
 		leftPlayer.transform.position = leftSpawn.transform.position;
 		rightPlayer.transform.position = rightSpawn.transform.position;
@@ -285,7 +313,7 @@ public class GameMaster : MonoBehaviour {
 		roundBreakAudio.clip = roundAudio[roundNumber-1];
 		roundBreakAudio.Play ();
 		RoundBreak ();
-		Debug.Log ("Left: Player " + playerRoles.x + ", God: Player " + playerRoles.y + ", Right: Player " + playerRoles.z);
+		Debug.Log ("Left: Player " + rounds[roundNumber,0] + ", God: Player " + rounds[roundNumber,1] + ", Right: Player " + rounds[roundNumber,2]);
 	}
 
 //====================================================================================
@@ -298,7 +326,7 @@ public class GameMaster : MonoBehaviour {
 //====================================================================================
 
 	public void ScorePoints(int playerNum, Idol idol){
-		Debug.Log ("Round num: " + roundNumber);
+//		Debug.Log ("Round num: " + roundNumber);
 		int idolBonusPoints = idol.getDamage ();
 		playerScores [rounds[roundNumber,1]] += pointsPerIdol + idolBonusPoints;
 		playerScores [playerNum] += pointsPerIdol;

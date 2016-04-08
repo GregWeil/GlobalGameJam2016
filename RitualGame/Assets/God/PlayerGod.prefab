@@ -79,7 +79,7 @@ GameObject:
   m_Layer: 0
   m_Name: Cutoff
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -620,6 +620,7 @@ MonoBehaviour:
   block: {fileID: 109110, guid: d015c30d4c1928e45a3700db46ba268c, type: 2}
   pickSound: {fileID: 8244684}
   placeSound: {fileID: 8262814}
+  amtScreenCoverage: 0.2
 --- !u!114 &11485344
 MonoBehaviour:
   m_ObjectHideFlags: 1
