@@ -66,7 +66,7 @@ public class GameMaster : MonoBehaviour {
 
 	// UI objects
 	Text pauseText = null;
-	Text titleText = null;
+	Image titleText = null;
 	Text roundText = null;
 	Text startRoundText = null;
 	Text endText = null;
@@ -132,7 +132,7 @@ public class GameMaster : MonoBehaviour {
 		idolCount = GameObject.Find ("Pedestal").GetComponentInChildren<TextMesh> ();
 		pauseText = GameObject.Find ("PauseText").GetComponent<Text> ();
 		pauseText.enabled = false;
-		titleText = GameObject.Find ("TitleText").GetComponent<Text> ();
+		titleText = GameObject.Find ("Image").GetComponent<Image> ();
 		roundText = GameObject.Find ("RoundText").GetComponent<Text> ();
 		startRoundText = GameObject.Find ("StartRoundButton").GetComponent<Text>();
 		endText = GameObject.Find ("EndText").GetComponent<Text> ();
