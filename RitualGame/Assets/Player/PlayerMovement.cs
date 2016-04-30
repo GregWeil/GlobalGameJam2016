@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour {
 		if (GameMaster.gm.paused) { return; }
 
 		//Turning
-		if (grounded && (Mathf.Abs(Input.GetAxis("Horizontal"+controlNum.ToString())) > 0.2f)) {
+		if (grounded && (Mathf.Abs(Input.GetAxis("Horizontal"+controlNum.ToString())) > 0.4f)) {
 			GetComponentInChildren<SpriteRenderer> ().flipX = (Input.GetAxis("Horizontal"+controlNum.ToString()) < 0.0f);
 			if (!moveSound.isPlaying) moveSound.Play ();
 		}

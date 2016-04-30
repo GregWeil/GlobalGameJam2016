@@ -41,9 +41,13 @@ public class GameMaster : MonoBehaviour {
 	public GameObject idolSpawn;
 	public AudioClip[] roundAudio = new AudioClip[6];
 	public AudioClip whistle;
+    public AudioSource startSound;
+    public AudioSource bPlayerWin;
+    public AudioSource gPlayerWin;
+    public AudioSource rPlayerWin;
 
 
-	Color[] plColors = { Color.blue, Color.green, Color.red };
+    Color[] plColors = { Color.blue, Color.green, Color.red };
 	int[,] rounds = new int[,] {
 		//player #s, not control #s
 		//{ left-tribesman, god, right-tribesman }
@@ -158,7 +162,7 @@ public class GameMaster : MonoBehaviour {
 		if(idolsRemaining <= 0){
 			endWhistle.Play ();
 			if (roundNumber >= 6) { 
-				EndGame ();
+				if (!gameOver) EndGame ();
 			} else{
 				InitializeNextRound ();
 			}
@@ -234,7 +238,8 @@ public class GameMaster : MonoBehaviour {
 		startRoundText.enabled = false;
 		roundRunning = true;
 		paused = false;
-	}
+        startSound.Play();
+    }
 
 //====================================================================================
 
@@ -242,7 +247,10 @@ public class GameMaster : MonoBehaviour {
 		paused = true;
 		roundMusic.Stop ();
 		menuMusic.Play ();
-		string p0 = "Player 1: " + playerScores[0] + "\n";
+        if (playerScores[0] > playerScores[1] && playerScores[0] > playerScores[2]) bPlayerWin.Play();
+        if (playerScores[1] > playerScores[0] && playerScores[1] > playerScores[2]) gPlayerWin.Play();
+        if (playerScores[2] > playerScores[1] && playerScores[2] > playerScores[0]) rPlayerWin.Play();
+        string p0 = "Player 1: " + playerScores[0] + "\n";
 		string p1 = "Player 2: " + playerScores[1] + "\n";
 		string p2 = "Player 3: " + playerScores[2] + "\n";
 		endText.text = "Final Score:\n" + p0 + p1 + p2;
